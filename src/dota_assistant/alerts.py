@@ -56,7 +56,9 @@ def _building_label(key: str) -> str | None:
 class AlertEngine:
     deaths_log: Path
     prev_alive: bool | None = None
-    last_no_tp: float = 0.0
+    # None = never warned; monotonic clock starts at boot, so 0.0 would wrongly
+    # throttle the first warning on a machine booted less than 90s ago.
+    last_no_tp: float | None = None
     death_count: int = 0
     # Announcement toggles (set from the Settings page). Death snapshots are
     # always logged for post-game stats regardless of the spoken-recap toggle.
@@ -168,7 +170,7 @@ class AlertEngine:
         if has_tp or has_bots:
             return []
         now = time.monotonic()
-        if now - self.last_no_tp < NO_TP_COOLDOWN:
+        if self.last_no_tp is not None and now - self.last_no_tp < NO_TP_COOLDOWN:
             return []
         self.last_no_tp = now
         return ["No TP scroll"]
