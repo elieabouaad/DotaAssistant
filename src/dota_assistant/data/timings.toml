@@ -1,0 +1,115 @@
+# All game-clock timings live here so patch changes never require code edits.
+# Times are in seconds of game clock. Current as of patch 7.41d (July 2026,
+# verified against Liquipedia) — re-verify after each major patch.
+#
+# Event fields:
+#   first    - clock time of the first occurrence
+#   interval - seconds between occurrences (0 = one-shot at `first`)
+#   end      - optional last clock time an occurrence can happen
+#   lead     - announce this many seconds BEFORE the occurrence
+#   message  - what gets spoken (write it to match the lead time)
+#   enabled  - set false to silence an event without deleting it
+#
+# Turbo mode: any field can be overridden with a turbo_ prefix
+# (turbo_first, turbo_interval, turbo_end). Start the server with --turbo
+# (or env DOTA_TURBO=1) to apply them. Fields without a turbo_ override
+# keep their normal value in Turbo.
+
+[announcer]
+# Voice is matched by (case-insensitive) substring against installed voices.
+# macOS: `say -v '?'` for the list (e.g. "Samantha"). Windows: e.g. "Zira" or
+# "David". Leave empty "" to use the system default voice.
+voice = ""
+rate = 210           # words per minute
+
+[[events]]
+name = "bounty_runes"
+message = "Bounty runes in 20 seconds"
+first = 0
+interval = 240
+lead = 20
+enabled = true
+
+[[events]]
+name = "water_runes"
+message = "Water rune in 20 seconds"
+first = 120
+interval = 120
+end = 240
+lead = 20
+enabled = true
+
+[[events]]
+name = "power_runes"
+message = "Power rune in 20 seconds"
+first = 360
+interval = 120
+lead = 20
+enabled = true
+
+# Shrines of Wisdom (replaced wisdom runes in 7.38): channel 3s nearby for XP.
+[[events]]
+name = "wisdom_shrine"
+message = "Wisdom shrine in 30 seconds"
+first = 420
+interval = 420
+turbo_interval = 210
+lead = 30
+enabled = true
+
+# Camps stack when pulled at X:53-X:55. Announce at X:45 each minute.
+# Chatty — disable if it gets annoying.
+[[events]]
+name = "stack_reminder"
+message = "Stack now"
+first = 113
+interval = 60
+lead = 8
+enabled = true
+
+[[events]]
+name = "night_falls"
+message = "Night in 30 seconds"
+first = 300
+interval = 600
+lead = 30
+enabled = true
+
+[[events]]
+name = "day_breaks"
+message = "Day in 30 seconds"
+first = 600
+interval = 600
+lead = 30
+enabled = true
+
+[[events]]
+name = "tormentor_spawn"
+message = "Tormentor spawns in 30 seconds"
+first = 1200
+turbo_first = 600
+interval = 0
+lead = 30
+enabled = true
+
+# Lotus pools spawn Healing Lotuses in the river: first at 3:00, then a fresh
+# lotus every 3 min. Warned 15s ahead so you can rotate to grab it. Pools keep
+# producing all game, but they matter most through the laning/early-mid phase,
+# so reminders stop at 18:00 to avoid late-game nagging (raise `end` to extend).
+[[events]]
+name = "lotus_spawn"
+message = "Lotus spawning in 15 seconds"
+first = 180
+interval = 180
+end = 1080
+lead = 15
+enabled = true
+
+# Roshan (manual trigger: F8 hotkey or POST /event/roshan-killed)
+[roshan]
+respawn_min = 480          # 8 min: Roshan MAY be back
+respawn_max = 660          # 11 min: Roshan IS back
+aegis_expiry = 300         # 5 min after kill (approximation of pickup time)
+turbo_respawn_min = 240    # Turbo: respawn timer is halved
+turbo_respawn_max = 330
+turbo_aegis_expiry = 240   # Turbo: Aegis lasts 4 minutes

@@ -1,0 +1,1778 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dota 2 Assistant</title>
+<style>
+  /* Dark-first: you're mid-game. Light mode supported for daytime browsing. */
+  :root {
+    --page: #0d0d0d; --surface: #1a1a19;
+    --ink: #ffffff; --ink-2: #c3c2b7; --muted: #898781;
+    --line: #2c2c2a; --border: rgba(255,255,255,.10);
+    --blue: #3987e5; --good: #0ca30c; --warn: #fab219;
+    --serious: #ec835a; --crit: #d03b3b;
+    --pos: #0ca30c; --neg: #e66767;
+  }
+  @media (prefers-color-scheme: light) {
+    :root {
+      --page: #f9f9f7; --surface: #fcfcfb;
+      --ink: #0b0b0b; --ink-2: #52514e; --muted: #898781;
+      --line: #e1e0d9; --border: rgba(11,11,11,.10);
+      --blue: #2a78d6; --pos: #006300; --neg: #d03b3b;
+    }
+  }
+  * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  body {
+    margin: 0; background: var(--page); color: var(--ink);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    padding: 12px; max-width: 1400px; margin-inline: auto;
+  }
+  .num { font-variant-numeric: tabular-nums; }
+  .card.tight { padding: 10px 12px; }
+  .card h4 { margin: 0 0 8px; font-size: 11px; text-transform: uppercase;
+             letter-spacing: .06em; color: var(--muted); font-weight: 600; }
+
+  /* tabs */
+  nav { display: flex; gap: 8px; margin-bottom: 12px; }
+  nav button {
+    background: var(--surface); color: var(--ink-2); border: 1px solid var(--border);
+    border-radius: 10px; padding: 8px 20px; font-size: 15px; cursor: pointer;
+  }
+  nav button.active { color: var(--ink); border-color: var(--blue); }
+
+  .card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; padding: 14px 16px;
+  }
+  .label {
+    font-size: 11px; text-transform: uppercase; letter-spacing: .06em;
+    color: var(--muted); margin-bottom: 2px;
+  }
+
+  /* live layout */
+  #live { display: grid; grid-template-columns: 1fr 300px; gap: 12px; align-items: start; }
+  @media (max-width: 860px) { #live { grid-template-columns: 1fr; } }
+  #main { display: flex; flex-direction: column; gap: 12px; }
+  /* a responsive shelf of equal panels for the dense lower half */
+  .panels { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+
+  /* ability + item cooldown chips */
+  .cds { display: flex; flex-wrap: wrap; gap: 6px; }
+  .cd-chip { position: relative; min-width: 52px; border: 1px solid var(--border);
+    border-radius: 8px; padding: 4px 8px; font-size: 12px; overflow: hidden; text-transform: capitalize; }
+  .cd-chip .nm { color: var(--ink-2); white-space: nowrap; }
+  .cd-chip .st { font-weight: 700; font-variant-numeric: tabular-nums; }
+  .cd-chip.ready .st { color: var(--good); }
+  .cd-chip.cooling .st { color: var(--warn); }
+  .cd-chip.nomana .st { color: var(--blue); }
+  .cd-chip.ult { border-color: var(--serious); }
+  .cd-chip.passive { opacity: .55; }
+  .cd-chip .bar { position: absolute; left: 0; bottom: 0; height: 3px; background: var(--warn); }
+
+  /* status effect badges */
+  .badges { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px; }
+  .badge { font-size: 11px; border-radius: 6px; padding: 2px 8px; border: 1px solid var(--border); color: var(--ink-2); }
+  .badge.on { color: var(--ink); }
+  .badge.debuff { border-color: var(--crit); color: var(--crit); }
+  .badge.buff { border-color: var(--good); color: var(--good); }
+  .badge.pos { border-color: var(--blue); color: var(--blue); }
+  .talents { display: inline-flex; gap: 3px; margin-left: 4px; vertical-align: middle; }
+  .talents i { width: 9px; height: 9px; border-radius: 2px; background: var(--line); display: inline-block; }
+  .talents i.t { background: var(--warn); }
+
+  /* talent tree — mirrors the in-game layout: two options per tier, level in
+     the middle, top tier (25) first. Taken side lights up gold. */
+  .ttree { display: flex; flex-direction: column; gap: 6px; }
+  .trow { display: grid; grid-template-columns: 1fr 40px 1fr; align-items: stretch; gap: 8px; }
+  .trow.locked { opacity: .5; }
+  .topt { border: 1px solid var(--border); border-radius: 8px; padding: 6px 9px;
+    font-size: 12px; line-height: 1.25; color: var(--ink-2); display: flex; align-items: center;
+    background: var(--page); }
+  .topt.l { justify-content: flex-end; text-align: right; }
+  .topt.r { justify-content: flex-start; text-align: left; }
+  .topt.taken { border-color: var(--warn); color: var(--ink);
+    background: color-mix(in srgb, var(--warn) 14%, var(--surface)); font-weight: 600; }
+  .topt.dim { opacity: .48; }
+  .tlvl { display: flex; align-items: center; justify-content: center; font-size: 12px;
+    font-weight: 700; font-variant-numeric: tabular-nums; color: var(--muted);
+    border: 1px solid var(--border); border-radius: 999px; }
+  .tlvl.open { color: var(--ink-2); }
+  .tlvl.done { color: #1a1a19; background: var(--warn); border-color: var(--warn); }
+  .tnone { color: var(--muted); font-size: 12px; }
+
+  /* buildings health grid */
+  .bldg { display: grid; grid-template-columns: auto 1fr auto; gap: 4px 8px; align-items: center; font-size: 12px; }
+  .bldg .bn { color: var(--ink-2); white-space: nowrap; }
+  .bldg .bmeter { height: 9px; border-radius: 3px; background: var(--line); overflow: hidden; }
+  .bldg .bmeter > i { display: block; height: 100%; background: var(--good); }
+  .bldg .bhp { color: var(--muted); font-variant-numeric: tabular-nums; text-align: right; min-width: 34px; }
+
+  /* gold breakdown */
+  .kv { display: grid; grid-template-columns: 1fr auto; gap: 3px 10px; font-size: 13px; }
+  .kv .k { color: var(--ink-2); } .kv .val { font-variant-numeric: tabular-nums; }
+
+  /* mini position map */
+  .posmap { width: 100%; max-width: 200px; aspect-ratio: 1; display: block; background: var(--line);
+            border-radius: 8px; margin: 0 auto; }
+
+  /* minimap: towers + hero position */
+  .minimap { width: 100%; max-width: 360px; aspect-ratio: 1; display: block; margin: 0 auto;
+             background: var(--line); border-radius: 8px; }
+  .minimap [title] { cursor: default; }
+  .mmlegend { display: flex; flex-wrap: wrap; gap: 6px 14px; justify-content: center;
+              margin-top: 10px; font-size: 11px; color: var(--muted); }
+  .mmlegend span { display: inline-flex; align-items: center; gap: 5px; }
+  .mmlegend i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+  .mmlegend i.ring { background: transparent; border: 1.5px solid var(--muted); }
+  .mmsub { text-align: center; color: var(--muted); font-size: 12px; margin-top: 6px; }
+
+  /* tactical context */
+  #tactical .row { display: flex; justify-content: space-between; font-size: 13px; padding: 4px 0;
+                   border-bottom: 1px solid var(--line); }
+  #tactical .row:last-child { border-bottom: none; }
+  #tactical .flag { color: var(--muted); } #tactical .flag.hot { color: var(--crit); font-weight: 600; }
+
+  /* raw state viewer */
+  details.raw { margin-top: 4px; }
+  details.raw summary { cursor: pointer; color: var(--muted); font-size: 13px; padding: 4px 0; }
+  details.raw pre { max-height: 420px; overflow: auto; background: var(--page); border: 1px solid var(--line);
+    border-radius: 8px; padding: 10px; font-size: 11.5px; line-height: 1.45; color: var(--ink-2); }
+
+  #waiting { text-align: center; padding: 60px 0; color: var(--muted); font-size: 18px; grid-column: 1 / -1; }
+
+  /* header: clock + next-up */
+  #header { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+  #clock { font-size: 64px; font-weight: 700; line-height: 1; }
+  .chip {
+    display: inline-block; border: 1px solid var(--border); border-radius: 999px;
+    padding: 3px 12px; font-size: 13px; color: var(--ink-2);
+  }
+  .chip.warn { color: var(--warn); border-color: var(--warn); }
+
+  #nextup { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; }
+  .next { padding: 10px 14px; }
+  .next .cd { font-size: 34px; font-weight: 700; line-height: 1.1; }
+  .next .cd.soon { color: var(--warn); }
+  .next .cd.now  { color: var(--crit); }
+  .next .what { font-size: 14px; color: var(--ink-2); margin-top: 2px; }
+
+  /* hero panel */
+  #heroName { font-size: 22px; font-weight: 700; text-transform: capitalize; }
+  .lvl { color: var(--ink-2); font-weight: 400; font-size: 16px; }
+  .meter { position: relative; height: 26px; border-radius: 6px; background: var(--line); margin-top: 8px; overflow: hidden; }
+  .meter > .fill { position: absolute; inset: 0 auto 0 0; border-radius: 6px; transition: width .3s; }
+  .meter > .val {
+    position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+    font-size: 14px; font-weight: 600; color: var(--ink); text-shadow: 0 0 4px rgba(0,0,0,.5);
+  }
+  @media (prefers-color-scheme: light) { .meter > .val { text-shadow: none; } }
+  #dead { display: none; margin-top: 8px; }
+  #dead .cd { font-size: 42px; font-weight: 700; color: var(--crit); }
+
+  /* stat tiles */
+  #tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 10px; }
+  .tile { padding: 10px 14px; }
+  .tile .v { font-size: 26px; font-weight: 700; line-height: 1.2; white-space: nowrap; }
+  .tile .sub { font-size: 12px; color: var(--muted); }
+
+  /* items */
+  #items { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+  .item {
+    border: 1px solid var(--border); border-radius: 8px; padding: 4px 10px;
+    font-size: 13px; color: var(--ink-2); text-transform: capitalize;
+  }
+  .item.tp { border-color: var(--blue); color: var(--blue); }
+  .item.neutral { border-style: dashed; }
+  .item.backpack { opacity: .55; }
+
+  /* scoreboard */
+  #scoreboard .sb { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 480px) { #scoreboard .sb { grid-template-columns: 1fr; } }
+  .sbteam .sbhead { display: flex; justify-content: space-between; align-items: baseline;
+    font-size: 12px; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 4px; }
+  .sbteam.radiant .sbhead { color: var(--good); }
+  .sbteam.dire .sbhead { color: var(--neg); }
+  .sbhead .tot { font-size: 15px; font-weight: 700; }
+  .sbrow { display: grid; grid-template-columns: 1fr auto; gap: 8px; align-items: center;
+    padding: 3px 7px; border-radius: 6px; font-size: 13px; border-left: 3px solid transparent; }
+  .sbteam.radiant .sbrow { border-left-color: color-mix(in srgb, var(--good) 45%, transparent); }
+  .sbteam.dire .sbrow { border-left-color: color-mix(in srgb, var(--neg) 45%, transparent); }
+  .sbrow.you { background: var(--line); font-weight: 700; }
+  .sbrow .nm { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-transform: capitalize; }
+  .sbrow .kd { font-variant-numeric: tabular-nums; color: var(--ink-2); }
+  .sbrow.you .kd { color: var(--ink); }
+  #scoreboard .note { font-size: 11px; color: var(--muted); margin-top: 8px; }
+
+  /* feed */
+  #feed { display: flex; flex-direction: column; gap: 6px; max-height: 70vh; overflow-y: auto; }
+  .fev { display: flex; gap: 10px; font-size: 14px; border-bottom: 1px solid var(--line); padding: 5px 2px;
+    border-left: 3px solid transparent; padding-left: 6px; }
+  .fev.radiant { border-left-color: var(--good); }
+  .fev.dire { border-left-color: var(--neg); }
+  .fev .t { color: var(--muted); min-width: 44px; }
+
+  /* draft tab (unchanged behavior) */
+  #draft { display: none; }
+  #search { width: 100%; padding: .6rem .8rem; font-size: 1rem; margin: .5rem 0;
+            border: 1px solid var(--border); border-radius: 8px; background: transparent; color: inherit; }
+  #suggestions { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: .8rem; }
+  #suggestions button, .enemy { border: 1px solid var(--border); border-radius: 999px;
+      padding: .3rem .8rem; cursor: pointer; background: transparent; color: inherit; font-size: .95rem; }
+  .enemy { background: #d03b3b22; border-color: #d03b3b88; }
+  .enemy::after { content: " ✕"; opacity: .6; }
+  #enemies { display: flex; flex-wrap: wrap; gap: .4rem; min-height: 2.2rem; margin-bottom: 1rem; }
+  table { border-collapse: collapse; width: 100%; }
+  th, td { text-align: left; padding: .45rem .6rem; border-bottom: 1px solid var(--line); }
+  th { font-size: .8rem; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
+  td.n, th.n { text-align: right; font-variant-numeric: tabular-nums; }
+  .pos { color: var(--pos); } .neg { color: var(--neg); }
+  .vs { font-size: .85rem; color: var(--ink-2); }
+
+  /* item plan (Phase A) */
+  .plan-controls { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; margin: .4rem 0 1rem; }
+  .plan-controls select, #myHeroSearch { padding: .5rem .7rem; font-size: .95rem; border: 1px solid var(--border);
+      border-radius: 8px; background: transparent; color: inherit; }
+  #myHeroSearch { min-width: 200px; }
+  .ally { background: #3b6fd022; border-color: #3b6fd088; }
+  .ally::after { content: " ✕"; opacity: .6; }
+  #mySuggestions { display: flex; flex-wrap: wrap; gap: .4rem; }
+  #mySuggestions button { border: 1px solid var(--border); border-radius: 999px; padding: .3rem .8rem;
+      cursor: pointer; background: transparent; color: inherit; font-size: .95rem; }
+  .plan-core { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-bottom: 8px; }
+  .plan-phase .label { font-size: 12px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); margin-bottom: 6px; }
+  .plan-phase .b { display: block; border: 1px solid var(--border); border-radius: 8px; padding: 4px 9px; font-size: 13px; margin-bottom: 5px; }
+  .plan-phase .b span { color: var(--muted); margin-left: 6px; font-size: 11px; }
+  .sit { border: 1px solid var(--border); border-left-width: 3px; border-radius: 8px; padding: 8px 12px; margin-bottom: 8px; }
+  .sit.core { border-left-color: var(--neg); } .sit.strong { border-left-color: #e0a03b; } .sit.consider { border-left-color: var(--muted); }
+  .sit .it { font-weight: 700; }
+  .sit .tag { font-size: 10px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); margin-left: 8px; }
+  .sit .why { font-size: 13px; color: var(--ink-2); margin: 3px 0 5px; }
+  .sit .vslist { display: flex; flex-wrap: wrap; gap: 5px; }
+  .sit .vschip { font-size: 11px; background: #d03b3b22; border: 1px solid #d03b3b55; border-radius: 999px; padding: 1px 8px; }
+  #planProfile { font-size: 13px; color: var(--ink-2); margin-bottom: 10px; }
+  .poolchk { display: inline-flex; align-items: center; gap: 6px; font-size: .9rem; color: var(--ink-2); cursor: pointer; }
+  .mtype { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--border); color: var(--ink-2); white-space: nowrap; }
+  .mt-ranked { background: #3b6fd022; border-color: #3b6fd088; color: #8ab4ff; }
+  .mt-turbo { background: #e0a03b22; border-color: #e0a03b88; }
+  .mt-bots, .mt-lobby, .mt-tournament, .mt-team, .mt-solo, .mt-unknown, .mt-other { opacity: .7; }
+  .lane-tips { margin: 0 0 8px; padding-left: 18px; }
+  .lane-tips li { font-size: 13px; color: var(--ink-2); margin-bottom: 5px; }
+
+  /* deep review (Phase C) */
+  .pbar { display: flex; align-items: center; gap: 10px; margin-bottom: 5px; }
+  .pbar .pl { width: 120px; font-size: 12px; color: var(--ink-2); }
+  .pbar .pt { flex: 1; height: 10px; background: var(--line); border-radius: 999px; overflow: hidden; }
+  .pbar .pf { display: block; height: 100%; border-radius: 999px; }
+  .pbar .pv { width: 40px; text-align: right; font-size: 12px; font-variant-numeric: tabular-nums; }
+  .coach-md { font-size: 14px; line-height: 1.55; color: var(--ink); }
+  #reviewBtn { cursor: pointer; }
+  #reviewBtn:disabled { opacity: .5; cursor: default; }
+
+  /* improve tab (Phase D) */
+  #improve { display: none; }
+  .focus { border-left: 4px solid var(--neg); }
+  .focus-t { font-size: 20px; font-weight: 700; margin-top: 4px; }
+  .focus-m { font-size: 15px; color: var(--warn); font-weight: 600; margin: 2px 0 6px; }
+  .focus-d { font-size: 14px; color: var(--ink-2); line-height: 1.5; }
+  .finding { margin-bottom: 10px; }
+  .finding .fh { display: flex; align-items: center; justify-content: space-between; }
+  .finding .ft { font-weight: 700; }
+  .finding .fsev { font-size: 10px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
+  .finding .fm { color: var(--warn); font-size: 14px; margin: 2px 0 4px; }
+  .finding .fd { font-size: 13px; color: var(--ink-2); line-height: 1.5; }
+  .dwin { display: flex; gap: 10px; align-items: flex-end; height: 90px; margin-top: 12px; }
+  .dw { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; }
+  .dwbar { width: 60%; background: var(--neg); border-radius: 3px 3px 0 0; min-height: 3px; }
+  .dwv { font-size: 12px; font-variant-numeric: tabular-nums; margin-top: 3px; }
+  .dwl { font-size: 10px; color: var(--muted); }
+  .hprow { display: flex; align-items: baseline; gap: 10px; padding: 4px 0; border-bottom: 1px solid var(--line); }
+  .hprow span:first-child { flex: 1; }
+  .hprow .hpg { font-size: 11px; color: var(--muted); }
+
+  /* history tab */
+  #history { display: none; }
+  #kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; margin-bottom: 12px; }
+  .kpi { padding: 10px 14px; }
+  .kpi .v { font-size: 26px; font-weight: 700; line-height: 1.2; }
+  .kpi .sub { font-size: 12px; color: var(--muted); }
+  .section-h { font-size: 13px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: 18px 2px 8px; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 760px) { .grid2 { grid-template-columns: 1fr; } }
+  #matchTable tr { cursor: pointer; }
+  #matchTable tbody tr:hover { background: var(--line); }
+  /* history sub-tabs + paged tables */
+  .subnav { display: flex; align-items: center; gap: 8px; margin: 18px 0 10px; flex-wrap: wrap; }
+  .subnav button {
+    background: var(--surface); color: var(--ink-2); border: 1px solid var(--border);
+    border-radius: 999px; padding: 6px 16px; font-size: 14px; cursor: pointer;
+  }
+  .subnav button.active { color: var(--ink); border-color: var(--blue); }
+  .subnav .spacer { flex: 1; }
+  .pager { display: flex; align-items: center; gap: 6px; margin-top: 12px; flex-wrap: wrap; }
+  .pager button {
+    background: var(--surface); color: var(--ink-2); border: 1px solid var(--border);
+    border-radius: 8px; padding: 4px 10px; font-size: 13px; cursor: pointer;
+  }
+  .pager button:disabled { opacity: .35; cursor: default; }
+  .pager .pinfo { font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; padding: 0 6px; }
+  .pager .spacer { flex: 1; }
+  .pager select { padding: .3rem .5rem; font-size: 13px; border: 1px solid var(--border);
+                  border-radius: 8px; background: var(--surface); color: inherit; }
+  .tbl-controls { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 4px; }
+  .tbl-controls input, .tbl-controls select {
+    padding: .45rem .6rem; font-size: .9rem; border: 1px solid var(--border);
+    border-radius: 8px; background: transparent; color: inherit; min-width: 200px;
+  }
+  .tbl-controls .count { color: var(--muted); font-size: 13px; }
+  th.sortable { cursor: pointer; user-select: none; white-space: nowrap; }
+  th.sortable:hover { color: var(--ink); }
+  th.sortable.sorted { color: var(--ink); }
+  th.sortable.sorted::after { content: ' BE'; }
+  th.sortable.sorted.asc::after { content: ' B4'; }
+  .empty-row td { color: var(--muted); text-align: center; padding: 24px 0; }
+  .res { font-weight: 700; }
+  .res.w { color: var(--pos); } .res.l { color: var(--neg); } .res.u { color: var(--muted); }
+  .spark { width: 100%; height: 54px; display: block; }
+  .chart { width: 100%; height: 200px; display: block; }
+  .map { width: 240px; height: 240px; display: block; background: var(--line); border-radius: 8px; }
+  .legend { display: flex; gap: 14px; flex-wrap: wrap; font-size: 12px; color: var(--ink-2); margin-top: 6px; }
+  .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 4px; vertical-align: middle; }
+  .build { display: flex; flex-wrap: wrap; gap: 6px; }
+  .build .b { border: 1px solid var(--border); border-radius: 8px; padding: 4px 9px; font-size: 13px; }
+  .build .b b { color: var(--ink); } .build .b span { color: var(--muted); margin-left: 5px; font-variant-numeric: tabular-nums; }
+  #matchDetail { margin-top: 8px; }
+  .back { background: none; border: 1px solid var(--border); border-radius: 8px; color: var(--ink-2);
+          padding: 5px 12px; cursor: pointer; font-size: 13px; }
+
+  /* settings tab */
+  #settings { display: none; }
+  #settings p.intro { color: var(--ink-2); margin: 4px 2px 14px; }
+  .setRow { display: flex; align-items: center; gap: 14px; padding: 11px 4px; border-bottom: 1px solid var(--line); }
+  .setRow:last-child { border-bottom: none; }
+  .setRow .meta { flex: 1; min-width: 0; }
+  .setRow .name { font-size: 15px; }
+  .setRow .desc { font-size: 12.5px; color: var(--muted); margin-top: 1px; }
+  /* toggle switch */
+  .sw { position: relative; width: 44px; height: 26px; flex: none; }
+  .sw input { position: absolute; opacity: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; }
+  .sw .track { position: absolute; inset: 0; background: var(--line); border: 1px solid var(--border);
+               border-radius: 999px; transition: background .15s; }
+  .sw .knob { position: absolute; top: 3px; left: 3px; width: 20px; height: 20px; border-radius: 50%;
+              background: var(--muted); transition: transform .15s, background .15s; }
+  .sw input:checked ~ .track { background: color-mix(in srgb, var(--good) 30%, transparent); border-color: var(--good); }
+  .sw input:checked ~ .knob { transform: translateX(18px); background: var(--good); }
+  .sw input:disabled { cursor: default; }
+</style>
+</head>
+<body>
+<nav>
+  <button id="tabLive" class="active">Live</button>
+  <button id="tabDraft">Draft</button>
+  <button id="tabHistory">History</button>
+  <button id="tabImprove">Improve</button>
+  <button id="tabSettings">Settings</button>
+</nav>
+
+<section id="live">
+  <div id="waiting">Waiting for Dota 2… start a match with -gamestateintegration enabled.</div>
+  <div id="main" hidden>
+    <div class="card" id="header">
+      <div>
+        <div class="label" id="clockLabel">Game clock</div>
+        <div id="clock" class="num">--:--</div>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:6px">
+        <span class="chip" id="dayChip">—</span>
+        <span class="chip" id="stateChip">—</span>
+        <span class="chip warn" id="turboChip" hidden>TURBO</span>
+      </div>
+      <div style="flex:1; min-width: 260px">
+        <div class="label">Next up</div>
+        <div id="nextup"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div id="heroName">—</div>
+      <div class="meter"><div class="fill" id="hpFill"></div><div class="val num" id="hpVal"></div></div>
+      <div class="meter"><div class="fill" id="mpFill" style="background:var(--blue)"></div><div class="val num" id="mpVal"></div></div>
+      <div id="dead">
+        <span class="label">Respawn in</span>
+        <span class="cd num" id="respawn"></span>
+        <span class="chip" id="bbChip"></span>
+      </div>
+      <div class="badges" id="statusBadges"></div>
+      <div id="items"></div>
+    </div>
+
+    <div id="tiles">
+      <div class="card tile"><div class="label">Gold</div><div class="v num" id="gold">—</div><div class="sub num" id="goldSub"></div></div>
+      <div class="card tile"><div class="label">Level / XP</div><div class="v num" id="lvlxp">—</div><div class="sub num" id="attrSub"></div></div>
+      <div class="card tile"><div class="label">K / D / A</div><div class="v num" id="kda">—</div><div class="sub num" id="streak"></div></div>
+      <div class="card tile"><div class="label">Last hits / Denies</div><div class="v num" id="lh">—</div><div class="sub num" id="lhSub"></div></div>
+      <div class="card tile"><div class="label">GPM / XPM</div><div class="v num" id="gpm">—</div></div>
+      <div class="card tile"><div class="label">Score (R–D)</div><div class="v num" id="score">—</div><div class="sub num" id="netk"></div></div>
+      <div class="card tile"><div class="label">Buyback</div><div class="v num" id="bbTile">—</div><div class="sub num" id="bbSub"></div></div>
+      <div class="card tile"><div class="label">Ward stock</div><div class="v num" id="ward">—</div><div class="sub">observer cooldown</div></div>
+    </div>
+
+    <div class="card tight" id="scoreboard">
+      <h4>Scoreboard — K / D</h4>
+      <div class="sb"><div class="sbteam radiant" id="sbRad"></div><div class="sbteam dire" id="sbDire"></div></div>
+      <div class="note">Kills/deaths are read live from the kill feed. Assists and hero names
+        aren't in GSI for the other nine players, so only your row shows assists and a name.</div>
+    </div>
+
+    <div class="card tight" id="minimapCard">
+      <h4>Minimap — towers &amp; your position</h4>
+      <svg class="minimap" id="minimap" viewBox="0 0 200 200"></svg>
+      <div class="mmlegend">
+        <span><i style="background:var(--good)"></i>Radiant</span>
+        <span><i style="background:var(--crit)"></i>Dire</span>
+        <span><i style="background:var(--blue)"></i>You</span>
+        <span><i class="ring"></i>Enemy / destroyed</span>
+      </div>
+      <div class="mmsub" id="mmSub"></div>
+    </div>
+
+    <div class="card tight" id="talentCard">
+      <h4>Talent tree</h4>
+      <div class="ttree" id="ttree"></div>
+    </div>
+
+    <div class="panels">
+      <div class="card tight"><h4>Abilities</h4><div class="cds" id="abils"></div></div>
+      <div class="card tight"><h4>Item cooldowns</h4><div class="cds" id="itemCds"></div></div>
+      <div class="card tight"><h4>Your buildings</h4><div class="bldg" id="bldg"></div></div>
+      <div class="card tight"><h4>Gold sources</h4><div class="kv" id="goldkv"></div></div>
+    </div>
+
+    <div class="card tight">
+      <details class="raw"><summary>Raw GSI state (everything the game sends)</summary>
+        <pre id="rawJson"></pre></details>
+    </div>
+  </div>
+
+  <div id="side" hidden style="display:flex; flex-direction:column; gap:12px">
+    <div class="card tight" id="tactical"><h4>Tactical</h4><div id="tacBody"></div></div>
+    <div class="card" id="feedCard">
+      <div class="label">Events</div>
+      <div id="feed"></div>
+    </div>
+  </div>
+</section>
+
+<section id="draft">
+  <p style="color:var(--ink-2)">Add the enemy picks as they happen — suggestions re-rank live.</p>
+  <input id="search" placeholder="Type an enemy hero name…" autocomplete="off">
+  <div id="suggestions"></div>
+  <div id="enemies"></div>
+  <div class="plan-controls" id="counterControls">
+    <select id="cRole">
+      <option value="">Any role</option>
+      <option value="core">Core (pos 1-3)</option>
+      <option value="support">Support (pos 4-5)</option>
+    </select>
+    <select id="cBracket"></select>
+    <label class="poolchk"><input type="checkbox" id="cPool"> My heroes only</label>
+  </div>
+  <div id="status" style="color:var(--muted)"></div>
+  <table id="results" hidden>
+    <thead><tr>
+      <th>Pick</th><th class="n">Advantage</th><th class="n">Bracket WR</th>
+      <th class="n">Your WR</th><th>Why</th>
+    </tr></thead>
+    <tbody></tbody>
+  </table>
+
+  <div class="section-h">Your item plan</div>
+  <div class="plan-controls">
+    <input id="myHeroSearch" placeholder="Your hero (auto-fills from live game)…" autocomplete="off">
+    <div id="myHeroChip"></div>
+    <select id="myRole">
+      <option value="carry">Carry (pos 1)</option>
+      <option value="mid">Mid (pos 2)</option>
+      <option value="offlane">Offlane (pos 3)</option>
+      <option value="support">Support (pos 4/5)</option>
+    </select>
+  </div>
+  <div id="mySuggestions"></div>
+  <div id="planOut"></div>
+</section>
+
+<section id="history">
+  <div id="histEmpty" style="color:var(--muted); padding:40px 0; text-align:center" hidden>
+    No matches recorded yet. Finished games are saved automatically — or run
+    <code>python stats.py --backfill</code> to import your existing logs.
+  </div>
+
+  <div id="histList">
+    <div id="kpis"></div>
+
+    <div class="section-h">Recent form (oldest → newest)</div>
+    <div class="card">
+      <div class="grid2">
+        <div><div class="label">GPM</div><svg id="sparkGpm" class="spark"></svg></div>
+        <div><div class="label">Deaths</div><svg id="sparkDeaths" class="spark"></svg></div>
+      </div>
+    </div>
+
+    <div class="subnav">
+      <button id="subMatches" class="active">Match history</button>
+      <button id="subHeroes">Hero history</button>
+      <span class="spacer"></span>
+      <select id="typeFilter" title="Applies to the stats above and both tables">
+        <option value="">All types</option>
+      </select>
+    </div>
+
+    <div id="viewMatches">
+      <div class="card">
+        <div class="tbl-controls">
+          <input id="matchSearch" placeholder="Filter these rows by hero&hellip;" autocomplete="off">
+          <span id="matchCount" class="count"></span>
+        </div>
+        <table id="matchTable">
+          <thead><tr><th></th><th>Date</th><th>Hero</th><th>Type</th><th class="n">K/D/A</th><th class="n">GPM/XPM</th>
+            <th class="n">LH</th><th class="n">CS@10</th><th class="n">Dur</th>
+            <th class="n" title="Total gold earned over the match (GPM x duration)">Gold earned</th></tr></thead>
+          <tbody></tbody>
+        </table>
+        <div class="pager" id="matchPager"></div>
+      </div>
+    </div>
+
+    <div id="viewHeroes" hidden>
+      <div class="card">
+        <div class="tbl-controls">
+          <input id="heroSearch" placeholder="Find a hero&hellip;" autocomplete="off">
+          <span id="heroCount" class="count"></span>
+        </div>
+        <table id="heroTable">
+          <thead><tr>
+            <th class="sortable" data-key="hero">Hero</th>
+            <th class="n sortable sorted" data-key="games">Games</th>
+            <th class="n sortable" data-key="wr">Win%</th>
+            <th class="n sortable" data-key="kda">Avg K/D/A</th>
+            <th class="n sortable" data-key="gpm">Avg GPM</th>
+          </tr></thead>
+          <tbody></tbody>
+        </table>
+        <div class="pager" id="heroPager"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="matchDetail" hidden></div>
+</section>
+
+<section id="improve">
+  <p class="intro">Your personal training plan, mined from every recorded game.
+    Work the top focus, then re-check as you play more.</p>
+  <div id="improveEmpty" style="color:var(--muted); padding:40px 0; text-align:center" hidden>
+    No matches recorded yet — play some games (or <code>python stats.py --backfill</code>).
+  </div>
+  <div id="improveOut"></div>
+</section>
+
+<section id="settings">
+  <p class="intro">Choose which events the assistant announces. Changes apply
+    immediately and are saved — they persist across restarts.</p>
+  <div id="setGroups"></div>
+  <div id="setStatus" style="color:var(--muted); font-size:13px; margin-top:10px; height:16px"></div>
+</section>
+
+<script>
+const $ = id => document.getElementById(id);
+
+/* ---------- tabs ---------- */
+function showTab(name) {
+  $('live').style.display     = name === 'live'     ? 'grid'  : 'none';
+  $('draft').style.display    = name === 'draft'    ? 'block' : 'none';
+  $('history').style.display  = name === 'history'  ? 'block' : 'none';
+  $('improve').style.display  = name === 'improve'  ? 'block' : 'none';
+  $('settings').style.display = name === 'settings' ? 'block' : 'none';
+  $('tabLive').classList.toggle('active', name === 'live');
+  $('tabDraft').classList.toggle('active', name === 'draft');
+  $('tabHistory').classList.toggle('active', name === 'history');
+  $('tabImprove').classList.toggle('active', name === 'improve');
+  $('tabSettings').classList.toggle('active', name === 'settings');
+  if (name === 'history') loadHistory();
+  if (name === 'improve') loadImprove();
+  if (name === 'settings') loadSettings();
+}
+$('tabLive').onclick     = () => showTab('live');
+$('tabDraft').onclick    = () => showTab('draft');
+$('tabHistory').onclick  = () => showTab('history');
+$('tabImprove').onclick  = () => showTab('improve');
+$('tabSettings').onclick = () => showTab('settings');
+
+/* ---------- live HUD ---------- */
+const fmt = s => {
+  if (s == null) return '--:--';
+  const sign = s < 0 ? '-' : ''; s = Math.abs(Math.round(s));
+  return `${sign}${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
+};
+const pretty = n => n.replace(/^item_/, '').replace(/_/g, ' ');
+
+async function pollLive() {
+  try {
+    const d = await (await fetch('/api/live')).json();
+    render(d);
+  } catch (e) { /* server restarting; keep polling */ }
+}
+
+function render(d) {
+  const s = d.state || {};
+  const map = s.map || {}, hero = s.hero || {}, pl = s.player || {};
+  const inGame = map.clock_time != null && hero.name;
+  $('waiting').style.display = inGame ? 'none' : 'block';
+  $('main').hidden = !inGame;
+  $('side').hidden = !inGame;
+  if (!inGame) return;
+
+  $('turboChip').hidden = !d.turbo;
+  $('clock').textContent = fmt(map.clock_time);
+  $('clockLabel').textContent = map.paused ? 'PAUSED' : 'Game clock';
+  $('dayChip').textContent = map.daytime ? '☀ Day' : '☾ Night';
+  $('stateChip').textContent = (map.game_state || '').replace('DOTA_GAMERULES_STATE_', '').replace(/_/g, ' ').toLowerCase();
+
+  /* next up: first 3 upcoming events */
+  const nu = $('nextup'); nu.innerHTML = '';
+  (d.upcoming || []).slice(0, 3).forEach(u => {
+    const left = u.at - map.clock_time;
+    const el = document.createElement('div');
+    el.className = 'card next';
+    el.innerHTML = `<div class="cd num ${left <= 10 ? 'now' : left <= 30 ? 'soon' : ''}">${fmt(left)}</div>
+                    <div class="what">${u.label}</div>`;
+    nu.appendChild(el);
+  });
+
+  /* hero */
+  $('heroName').innerHTML = `${(hero.name || '').replace('npc_dota_hero_', '').replace(/_/g, ' ')}
+     <span class="lvl">lvl ${hero.level ?? '—'}</span>`;
+  const hpp = hero.health_percent ?? 0;
+  $('hpFill').style.width = hpp + '%';
+  $('hpFill').style.background = hpp > 50 ? 'var(--good)' : hpp > 25 ? 'var(--warn)' : 'var(--crit)';
+  $('hpVal').textContent = `HP ${hero.health ?? '—'} / ${hero.max_health ?? '—'}`;
+  $('mpFill').style.width = (hero.mana_percent ?? 0) + '%';
+  $('mpVal').textContent = `MP ${hero.mana ?? '—'} / ${hero.max_mana ?? '—'}`;
+
+  const dead = hero.alive === false;
+  $('dead').style.display = dead ? 'block' : 'none';
+  if (dead) {
+    $('respawn').textContent = (hero.respawn_seconds ?? '—') + 's';
+    const cost = hero.buyback_cost, cd = hero.buyback_cooldown ?? 0, gold = pl.gold ?? 0;
+    $('bbChip').textContent =
+      cd > 0 ? `Buyback on CD (${Math.ceil(cd)}s)` :
+      gold >= cost ? `Buyback ready — ${cost}g` :
+      `No buyback — need ${cost - gold}g more`;
+    $('bbChip').style.color = cd > 0 ? 'var(--warn)' : gold >= cost ? 'var(--good)' : 'var(--crit)';
+  }
+
+  /* status badges: active effects + aghs/shard/facet + talents */
+  renderStatus(hero);
+
+  /* items */
+  const it = $('items'); it.innerHTML = '';
+  const slots = s.items || {};
+  const add = (v, cls) => {
+    if (!v || v.name === 'empty') return;
+    const el = document.createElement('span');
+    el.className = 'item ' + cls;
+    const ch = (v.charges ?? v.item_charges) > 1 ? ` ×${v.charges ?? v.item_charges}` : '';
+    el.textContent = pretty(v.name) + ch;
+    it.appendChild(el);
+  };
+  for (let i = 0; i < 6; i++) add(slots['slot' + i], '');
+  add(slots.teleport0, 'tp');
+  for (let i = 0; i < 6; i++) add(slots['neutral' + i], 'neutral');
+  for (let i = 6; i < 9; i++) add(slots['slot' + i], 'backpack');
+
+  /* tiles */
+  $('gold').textContent = pl.gold ?? '—';
+  $('goldSub').textContent = pl.gold_reliable != null ? `${pl.gold_reliable}rel / ${pl.gold_unreliable ?? 0}unrel` : '';
+  $('lvlxp').textContent = hero.level ?? '—';
+  $('attrSub').textContent = (hero.xp != null ? `${hero.xp} xp` : '') + (hero.attributes_level ? ` · ${hero.attributes_level} stat` : '');
+  $('kda').textContent = `${pl.kills ?? 0} / ${pl.deaths ?? 0} / ${pl.assists ?? 0}`;
+  $('streak').textContent = (pl.kill_streak ?? 0) >= 2 ? `${pl.kill_streak} kill streak` : '';
+  $('lh').textContent = `${pl.last_hits ?? 0} / ${pl.denies ?? 0}`;
+  const lane = d.lane || {};
+  if (lane.expected != null) {
+    const diff = (lane.last_hits ?? 0) - lane.expected;
+    $('lhSub').textContent = `vs ${lane.expected} pace (${diff >= 0 ? '+' : ''}${diff})`;
+    $('lhSub').style.color = lane.on_track ? 'var(--pos)' : 'var(--neg)';
+  } else {
+    $('lhSub').textContent = '';
+  }
+  $('gpm').textContent = `${pl.gpm ?? 0} / ${pl.xpm ?? 0}`;
+  $('score').textContent = `${map.radiant_score ?? 0} – ${map.dire_score ?? 0}`;
+  const nk = d.context?.fight_net_kills || 0;
+  $('netk').textContent = nk ? `${nk > 0 ? '+' : ''}${nk} in last fight` : '';
+  const bbCd = hero.buyback_cooldown ?? 0;
+  $('bbTile').textContent = bbCd > 0 ? fmt(bbCd) : (hero.buyback_cost ?? '—');
+  $('bbSub').textContent = bbCd > 0 ? 'on cooldown'
+    : (hero.buyback_cost != null && (pl.gold ?? 0) >= hero.buyback_cost ? 'affordable' : 'gold cost');
+  const wcd = map.ward_purchase_cooldown ?? 0;
+  $('ward').textContent = wcd > 0 ? fmt(wcd) : 'ready';
+
+  renderScoreboard(d.scoreboard || []);
+  renderTalents(hero, d.talents);
+  renderAbilities(s.abilities || {});
+  renderItemCds(slots);
+  renderBuildings(s.buildings || {});
+  renderGold(pl);
+  renderMinimap(s);
+  renderTactical(d.context || {}, map, pl);
+  $('rawJson').textContent = JSON.stringify(s, null, 2);
+
+  /* feed */
+  const f = $('feed'); f.innerHTML = '';
+  (d.feed || []).forEach(ev => {
+    const el = document.createElement('div');
+    el.className = 'fev' + (ev.team ? ' ' + ev.team : '');
+    el.innerHTML = `<span class="t num">${fmt(ev.clock)}</span><span>${ev.text}</span>`;
+    f.appendChild(el);
+  });
+}
+
+function renderScoreboard(rows) {
+  const teams = { radiant: $('sbRad'), dire: $('sbDire') };
+  ['radiant', 'dire'].forEach(tm => {
+    const box = teams[tm];
+    const players = rows.filter(r => r.team === tm);
+    const totK = players.reduce((s, r) => s + (r.k || 0), 0);
+    const totD = players.reduce((s, r) => s + (r.d || 0), 0);
+    box.innerHTML = `<div class="sbhead"><span>${tm}</span>` +
+      `<span class="tot num">${totK} <span style="color:var(--muted);font-weight:400">/ ${totD}</span></span></div>` +
+      players.map(r => {
+        const a = r.a != null ? ` / ${r.a}` : '';
+        return `<div class="sbrow ${r.you ? 'you' : ''}"><span class="nm">${r.label}${r.you ? ' (you)' : ''}</span>` +
+          `<span class="kd">${r.k} / ${r.d}${a}</span></div>`;
+      }).join('');
+  });
+}
+
+/* --- live panel renderers --- */
+function renderStatus(hero) {
+  const box = $('statusBadges'); box.innerHTML = '';
+  const badge = (txt, cls) => {
+    const b = document.createElement('span'); b.className = 'badge ' + cls; b.textContent = txt; box.appendChild(b);
+  };
+  if (hero.aghanims_scepter) badge('Aghanim\'s', 'pos');
+  if (hero.aghanims_shard) badge('Shard', 'pos');
+  if (hero.facet) badge('Facet ' + hero.facet, 'on');
+  // active negative states
+  const debuffs = ['stunned', 'silenced', 'hexed', 'disarmed', 'muted', 'broken'];
+  ['stunned','silenced','hexed','disarmed','muted','break'].forEach((k, i) => {
+    if (hero[k]) badge(debuffs[i], 'debuff');
+  });
+  if (hero.magicimmune) badge('magic immune', 'buff');
+  if (hero.smoked) badge('smoked', 'pos');
+  if (hero.has_debuff && !debuffs.some((_, i) => hero[['stunned','silenced','hexed','disarmed','muted','break'][i]])) badge('debuffed', 'debuff');
+  // talents: 8 pips, lit = taken
+  const taken = [1,2,3,4,5,6,7,8].filter(n => hero['talent_' + n]).length;
+  if (hero.level >= 10) {
+    const t = document.createElement('span'); t.className = 'badge on';
+    t.innerHTML = `talents <span class="talents">${[1,2,3,4,5,6,7,8].map(n =>
+      `<i class="${hero['talent_' + n] ? 't' : ''}"></i>`).join('')}</span>`;
+    box.appendChild(t);
+  }
+}
+
+// Real Dota talent tree: tiers 25→10, two options each, taken side lit gold.
+// `tree` comes from /api/live (cache/talents.json), keyed by hero name; null if
+// we have no talent data for this hero (e.g. a brand-new hero not yet baked in).
+function renderTalents(hero, tree) {
+  const box = $('ttree');
+  if (!tree || !Array.isArray(tree.tiers)) {
+    box.innerHTML = '<span class="tnone">No talent data for this hero.</span>';
+    return;
+  }
+  const lvl = hero.level ?? 0;
+  box.innerHTML = tree.tiers.map(t => {
+    const [oL, oR] = t.options || [];
+    const takenL = oL && !!hero['talent_' + oL.slot];
+    const takenR = oR && !!hero['talent_' + oR.slot];
+    const anyTaken = takenL || takenR;
+    const reachable = lvl >= t.level;
+    // Dim the untaken side once a pick is locked in, or the whole row if the
+    // hero can't reach this tier yet.
+    const cell = (o, side, taken) =>
+      `<div class="topt ${side} ${taken ? 'taken' : (anyTaken || !reachable) ? 'dim' : ''}">${o ? (o.text || '—') : '—'}</div>`;
+    const lvlCls = anyTaken ? 'done' : reachable ? 'open' : '';
+    return `<div class="trow ${reachable ? '' : 'locked'}">
+      ${cell(oL, 'l', takenL)}
+      <div class="tlvl ${lvlCls}">${t.level}</div>
+      ${cell(oR, 'r', takenR)}
+    </div>`;
+  }).join('');
+}
+
+function cdChip(container, name, ab, isUlt) {
+  const cd = ab.cooldown ?? 0, max = ab.max_cooldown ?? 0;
+  const passive = ab.passive;
+  let cls = 'ready', st = '✓';
+  if (passive) { cls = 'passive'; st = 'pas'; }
+  else if (cd > 0) { cls = 'cooling'; st = Math.ceil(cd) + 's'; }
+  else if (ab.can_cast === false) { cls = 'nomana'; st = 'mana'; }
+  const el = document.createElement('div');
+  el.className = 'cd-chip ' + cls + (isUlt ? ' ult' : '');
+  el.innerHTML = `<div class="nm">${name}</div><div class="st">${st}</div>` +
+    (cd > 0 && max > 0 ? `<div class="bar" style="width:${100 * cd / max}%"></div>` : '');
+  container.appendChild(el);
+}
+
+function renderAbilities(ab) {
+  const box = $('abils'); box.innerHTML = '';
+  Object.keys(ab).sort().forEach(k => {
+    const a = ab[k];
+    if (!a || !a.name || a.name.startsWith('plus_')) return;  // skip plus/guild filler
+    const nm = a.name.replace(/^[a-z_]+?_/, '').replace(/_/g, ' ');
+    cdChip(box, nm, a, a.ultimate);
+  });
+  if (!box.children.length) box.innerHTML = '<span style="color:var(--muted);font-size:12px">—</span>';
+}
+
+function renderItemCds(slots) {
+  const box = $('itemCds'); box.innerHTML = '';
+  ['slot0','slot1','slot2','slot3','slot4','slot5','teleport0','neutral0'].forEach(k => {
+    const v = slots[k];
+    if (!v || v.name === 'empty' || v.passive) return;
+    if ((v.max_cooldown ?? 0) === 0) return;  // no active use
+    cdChip(box, pretty(v.name), v, false);
+  });
+  if (!box.children.length) box.innerHTML = '<span style="color:var(--muted);font-size:12px">no active items</span>';
+}
+
+function renderBuildings(buildings) {
+  const box = $('bldg'); box.innerHTML = '';
+  const rows = [];
+  Object.values(buildings).forEach(team => {
+    if (typeof team !== 'object') return;
+    Object.entries(team).forEach(([key, info]) => {
+      if (!info || info.health == null) return;
+      const nm = key.replace(/^dota_(bad|good)guys_/, '').replace(/^(bad|good)_/, '')
+        .replace(/_/g, ' ').replace('tower', 'T');
+      rows.push({ nm, hp: info.health, max: info.max_health || 1, key });
+    });
+  });
+  // order: forts/rax first, then towers by tier
+  const rank = k => k.includes('fort') ? 0 : k.includes('rax') ? 1 : k.includes('tower4') ? 2 : k.includes('tower3') ? 3 : k.includes('tower2') ? 4 : 5;
+  rows.sort((a, b) => rank(a.key) - rank(b.key));
+  rows.forEach(r => {
+    const pct = Math.round(100 * r.hp / r.max);
+    const col = pct > 60 ? 'var(--good)' : pct > 30 ? 'var(--warn)' : 'var(--crit)';
+    box.insertAdjacentHTML('beforeend',
+      `<span class="bn">${r.nm}</span>` +
+      `<span class="bmeter"><i style="width:${pct}%;background:${col}"></i></span>` +
+      `<span class="bhp">${pct}%</span>`);
+  });
+  if (!rows.length) box.innerHTML = '<span style="color:var(--muted);font-size:12px">no building data (only your team is exposed)</span>';
+}
+
+function renderGold(pl) {
+  const box = $('goldkv'); box.innerHTML = '';
+  const rows = [
+    ['Hero kills', pl.gold_from_hero_kills], ['Creeps', pl.gold_from_creep_kills],
+    ['Summons', pl.gold_from_summon_kills], ['Passive income', pl.gold_from_income],
+    ['Shared / bounty', pl.gold_from_shared],
+  ].filter(r => r[1] != null);
+  rows.forEach(([k, v]) => box.insertAdjacentHTML('beforeend',
+    `<span class="k">${k}</span><span class="val">${v}</span>`));
+  if (!rows.length) box.innerHTML = '<span class="k">—</span><span></span>';
+}
+
+// Full minimap: every tower/rax/ancient at its real world position, coloured by
+// live health for your team (GSI only exposes your own buildings), team-outlined
+// for the enemy (position only — GSI never sends enemy building state), plus
+// Roshan's pit and your live hero dot. World coords share the hero's xpos/ypos
+// space, so the norm() below lines everything up.
+function tName(key) {
+  return key.replace(/^dota_(bad|good)guys_/, '').replace(/^(bad|good)_/, '')
+    .replace(/_/g, ' ').replace('tower', 'T');
+}
+function renderMinimap(s) {
+  const svg = $('minimap'); if (!svg) return;
+  svg.innerHTML = '';
+  const W = 200, coords = (MAP_COORDS && MAP_COORDS.towers) || {};
+  const norm = v => Math.max(0, Math.min(1, (v + 8300) / 16600));
+  const P = (x, y) => [norm(x) * W, (1 - norm(y)) * W];  // world -> svg (y flips)
+
+  // terrain halves split by the river (SVG "\" diagonal); Radiant bottom-left.
+  svg.appendChild(el('polygon', { points: `0,0 0,${W} ${W},${W}`,
+    fill: css('--good'), opacity: .08 }));
+  svg.appendChild(el('polygon', { points: `0,0 ${W},0 ${W},${W}`,
+    fill: css('--crit'), opacity: .08 }));
+  svg.appendChild(el('line', { x1: 0, y1: 0, x2: W, y2: W,
+    stroke: css('--blue'), 'stroke-width': 1, opacity: .35 }));  // river
+
+  if (!Object.keys(coords).length) {
+    $('mmSub').textContent = 'loading map…';
+    return;
+  }
+
+  // Live health for your team's buildings, keyed by GSI building name.
+  const health = {};
+  Object.values(s.buildings || {}).forEach(team => {
+    if (team && typeof team === 'object') Object.entries(team).forEach(([k, v]) => {
+      if (v && v.health != null) health[k] = { hp: v.health, max: v.max_health || 1 };
+    });
+  });
+  // GSI only ever sends your own team's buildings, so the buildings dict key is
+  // a reliable fallback if player.team_name is missing (e.g. spectating).
+  const myTeam = (s.player || {}).team_name || Object.keys(s.buildings || {})[0];
+  const myIsGood = myTeam === 'radiant';
+  const isGoodKey = k => k.startsWith('dota_goodguys') || k.startsWith('good_');
+
+  // Roshan pit
+  const rosh = (MAP_COORDS.extras || {}).roshan;
+  if (rosh) {
+    const [rx, ry] = P(rosh[0], rosh[1]);
+    const pit = el('circle', { cx: rx, cy: ry, r: 3.2, fill: 'none',
+      stroke: css('--warn'), 'stroke-width': 1.2, opacity: .8 });
+    pit.appendChild(el('title', {}, 'Roshan pit'));
+    svg.appendChild(pit);
+  }
+
+  // Towers / rax / ancients
+  Object.entries(coords).forEach(([key, xy]) => {
+    const [x, y] = P(xy[0], xy[1]);
+    const good = isGoodKey(key);
+    const mine = good === myIsGood;
+    const teamCol = good ? css('--good') : css('--crit');
+    const isAncient = key.includes('fort'), isRax = key.includes('rax');
+    const tier = key.includes('tower4') ? 4 : key.includes('tower3') ? 3
+      : key.includes('tower2') ? 2 : key.includes('tower1') ? 1 : 0;
+    const r = isAncient ? 5.5 : isRax ? 2.4 : tier >= 3 ? 4 : tier === 2 ? 3.4 : 3;
+
+    let attrs, tip = tName(key);
+    if (mine) {
+      const h = health[key];
+      if (h) {                                   // standing — colour by HP
+        const pct = Math.round(100 * h.hp / h.max);
+        const col = pct > 60 ? css('--good') : pct > 30 ? css('--warn') : css('--crit');
+        attrs = { cx: x, cy: y, r, fill: col, stroke: 'var(--surface)', 'stroke-width': 1 };
+        tip += ` — ${pct}% (${h.hp}/${h.max})`;
+      } else {                                   // absent from GSI = destroyed
+        attrs = { cx: x, cy: y, r, fill: 'none', stroke: css('--muted'),
+          'stroke-width': 1, 'stroke-dasharray': '1.5 1.5', opacity: .6 };
+        tip += ' — destroyed';
+      }
+    } else {                                     // enemy: position only
+      attrs = { cx: x, cy: y, r, fill: 'none', stroke: teamCol,
+        'stroke-width': 1.2, opacity: .7 };
+      tip += ' (enemy — HP hidden)';
+    }
+    const shape = el(isRax ? 'rect' : 'circle',
+      isRax ? { x: x - r, y: y - r, width: r * 2, height: r * 2, rx: 1, ...stripCircle(attrs) } : attrs);
+    shape.appendChild(el('title', {}, tip));
+    svg.appendChild(shape);
+  });
+
+  // Your hero
+  const h = s.hero || {};
+  if (h.xpos != null && h.ypos != null) {
+    const [hx, hy] = P(h.xpos, h.ypos);
+    const dot = el('circle', { cx: hx, cy: hy, r: 4.5,
+      fill: h.alive === false ? css('--muted') : css('--blue'),
+      stroke: '#fff', 'stroke-width': 1.5 });
+    dot.appendChild(el('title', {}, h.alive === false ? 'You (dead)' : 'You'));
+    svg.appendChild(dot);
+    $('mmSub').textContent = h.alive === false ? 'You are dead' : `Your position: ${h.xpos}, ${h.ypos}`;
+  } else {
+    $('mmSub').textContent = 'no hero position';
+  }
+}
+// rect uses x/y/width/height instead of cx/cy/r — carry over only fill/stroke.
+function stripCircle(a) {
+  const { cx, cy, r, ...rest } = a; return rest;
+}
+
+function renderTactical(ctx, map, pl) {
+  const flags = [
+    ['Fight swing', ctx.fight_net_kills ? `${ctx.fight_net_kills > 0 ? '+' : ''}${ctx.fight_net_kills}` : '—', ctx.fight_net_kills < 0],
+    ['Enemy smoke', ctx.enemy_smoke_recent ? 'ACTIVE' : 'clear', ctx.enemy_smoke_recent],
+    ['Enemy scan', ctx.enemy_scan_recent ? 'RECENT' : 'clear', ctx.enemy_scan_recent],
+    ['Enemy buyback', ctx.enemy_buyback_recent ? 'USED' : '—', ctx.enemy_buyback_recent],
+    ['Net kills', `${(map.radiant_score ?? 0) - (map.dire_score ?? 0)} (R–D)`, false],
+  ];
+  $('tacBody').innerHTML = flags.map(([k, v, hot]) =>
+    `<div class="row"><span>${k}</span><span class="flag ${hot ? 'hot' : ''}">${v}</span></div>`).join('');
+}
+setInterval(pollLive, 1000);
+pollLive();
+
+/* ---------- draft tab ---------- */
+let allHeroes = [], enemies = [];
+(async () => { try { allHeroes = await (await fetch('/api/heroes')).json(); tryAutofillHero(); } catch (e) {} })();
+
+/* static building coordinates for the minimap — fetched once, reused every tick */
+let MAP_COORDS = null;
+(async () => { try { MAP_COORDS = await (await fetch('/api/mapcoords')).json(); } catch (e) {} })();
+
+const search = $('search'), sugg = $('suggestions'),
+      enemiesEl = $('enemies'), statusEl = $('status'), table = $('results');
+
+search.addEventListener('input', () => {
+  const q = search.value.trim().toLowerCase();
+  sugg.innerHTML = '';
+  if (q.length < 2) return;
+  allHeroes
+    .filter(h => h.localized_name.toLowerCase().includes(q) && !enemies.some(e => e.id === h.id))
+    .slice(0, 8)
+    .forEach(h => {
+      const b = document.createElement('button');
+      b.textContent = h.localized_name;
+      b.onclick = () => { addEnemy(h); search.value = ''; sugg.innerHTML = ''; search.focus(); };
+      sugg.appendChild(b);
+    });
+});
+
+function addEnemy(h) { if (enemies.length < 5) { enemies.push(h); renderEnemies(); refresh(); } }
+function removeEnemy(id) { enemies = enemies.filter(e => e.id !== id); renderEnemies(); refresh(); }
+function renderEnemies() {
+  enemiesEl.innerHTML = '';
+  enemies.forEach(e => {
+    const chip = document.createElement('span');
+    chip.className = 'enemy'; chip.textContent = e.localized_name;
+    chip.onclick = () => removeEnemy(e.id);
+    enemiesEl.appendChild(chip);
+  });
+}
+
+async function refresh() {
+  refreshPlan();  // the item plan reacts to enemy-draft changes too
+  const tbody = table.querySelector('tbody');
+  if (!enemies.length) { table.hidden = true; statusEl.textContent = ''; return; }
+  statusEl.textContent = 'Ranking counters…';
+  const q = '/api/counters?ids=' + enemies.map(e => e.id).join(',') +
+            '&role=' + $('cRole').value + '&bracket=' + $('cBracket').value +
+            '&pool=' + ($('cPool').checked ? 'true' : 'false');
+  const rows = await (await fetch(q)).json();
+  tbody.innerHTML = '';
+  rows.forEach(r => {
+    const adv = r.counter ?? r.score;
+    const tr = document.createElement('tr');
+    tr.innerHTML =
+      `<td>${r.hero}</td>` +
+      `<td class="n ${adv >= 0 ? 'pos' : 'neg'}">${adv > 0 ? '+' : ''}${adv.toFixed(1)}%</td>` +
+      `<td class="n">${r.bracket_wr != null ? r.bracket_wr + '%' : '—'}</td>` +
+      `<td class="n">${r.my_winrate != null ? r.my_winrate + '% (' + r.my_games + 'g)' : (r.my_games ? r.my_games + 'g' : '—')}</td>` +
+      `<td class="vs">${r.why || ''}</td>`;
+    tbody.appendChild(tr);
+  });
+  statusEl.textContent = rows.length ? '' : 'No heroes match those filters (try Any role, or remove "My heroes only").';
+  table.hidden = false;
+}
+
+/* draft control wiring — populate brackets, re-rank on any change */
+(async () => {
+  const sel = $('cBracket');
+  try {
+    const bl = await (await fetch('/api/brackets')).json();
+    sel.innerHTML = bl.map(b => `<option value="${b.key}"${b.default ? ' selected' : ''}>${b.label}</option>`).join('');
+  } catch (e) { sel.innerHTML = '<option value="all">all brackets</option>'; }
+})();
+['cRole', 'cBracket', 'cPool'].forEach(id => $(id).addEventListener('change', refresh));
+
+/* ---------- item plan (Phase A) ---------- */
+let myHero = null, myHeroManual = false;
+const myHeroSearch = $('myHeroSearch'), myHeroChip = $('myHeroChip'),
+      mySugg = $('mySuggestions'), myRole = $('myRole'), planOut = $('planOut');
+
+myHeroSearch.addEventListener('input', () => {
+  const q = myHeroSearch.value.trim().toLowerCase();
+  mySugg.innerHTML = '';
+  if (q.length < 2) return;
+  allHeroes.filter(h => h.localized_name.toLowerCase().includes(q)).slice(0, 8).forEach(h => {
+    const b = document.createElement('button');
+    b.textContent = h.localized_name;
+    b.onclick = () => { setMyHero(h, true); myHeroSearch.value = ''; mySugg.innerHTML = ''; };
+    mySugg.appendChild(b);
+  });
+});
+
+function setMyHero(h, manual) {
+  myHero = h;
+  if (manual) myHeroManual = true;
+  myHeroChip.innerHTML = '';
+  if (h) {
+    const chip = document.createElement('span');
+    chip.className = 'ally'; chip.textContent = h.localized_name;
+    chip.onclick = () => { myHero = null; myHeroManual = false; myHeroChip.innerHTML = ''; planOut.innerHTML = ''; };
+    myHeroChip.appendChild(chip);
+  }
+  refreshPlan();
+}
+
+myRole.addEventListener('change', refreshPlan);
+
+async function refreshPlan() {
+  if (!myHero) { planOut.innerHTML = ''; return; }
+  const url = '/api/itemplan?hero=' + myHero.id + '&role=' + myRole.value +
+              '&enemies=' + enemies.map(e => e.id).join(',');
+  let p; try { p = await (await fetch(url)).json(); } catch (e) { return; }
+  renderPlan(p);
+}
+
+function renderPlan(p) {
+  let html = '';
+  const dp = p.damage_profile || {};
+  if (p.enemy_count) {
+    const lean = dp.magic > dp.physical ? 'lean magic resistance (BKB / Pipe)'
+      : dp.physical > dp.magic ? 'lean armor (AC / Halberd / Ghost)' : 'mixed — stay flexible';
+    html += `<div id="planProfile">Enemy damage: <b>${dp.magic || 0}</b> magical, ` +
+            `<b>${dp.physical || 0}</b> physical — ${lean}.</div>`;
+  }
+  if (p.laning && p.laning.length) {
+    html += '<div class="section-h">Laning watch-outs</div>';
+    html += '<ul class="lane-tips">' + p.laning.map(t => `<li>${t}</li>`).join('') + '</ul>';
+  }
+  if (p.core) {
+    html += '<div class="plan-core">';
+    [['starting', 'Starting'], ['early', 'Early'], ['mid', 'Mid'], ['late', 'Late']].forEach(([k, label]) => {
+      const items = p.core[k] || [];
+      if (!items.length) return;
+      html += `<div class="plan-phase"><div class="label">${label}</div>` +
+        items.map(it => `<span class="b">${it.name}</span>`).join('') + '</div>';
+    });
+    html += '</div>';
+  } else if (myHero) {
+    html += '<p style="color:var(--muted)">Core build unavailable (OpenDota offline?) — situational items still shown below.</p>';
+  }
+  if (p.situational && p.situational.length) {
+    html += '<div class="section-h">Vs their draft</div>';
+    p.situational.forEach(s => {
+      html += `<div class="sit ${s.tier}"><span class="it">${s.item}</span>` +
+        `<span class="tag">${s.tier}</span>` +
+        `<div class="why">${s.reason}</div>` +
+        `<div class="vslist">` + s.vs.map(v => `<span class="vschip">${v}</span>`).join('') + `</div></div>`;
+    });
+  } else if (p.enemy_count) {
+    html += '<p style="color:var(--muted)">No specific counter-items flagged for this draft — build your standard game.</p>';
+  }
+  planOut.innerHTML = html || '<p style="color:var(--muted)">Pick your hero above to see the winning build.</p>';
+}
+
+// Auto-fill your hero from the live game (unless you've picked one manually).
+async function tryAutofillHero() {
+  if (myHeroManual || !allHeroes.length) return;
+  let d; try { d = await (await fetch('/api/live')).json(); } catch (e) { return; }
+  const hid = d && d.state && d.state.hero && d.state.hero.id;
+  if (!hid || (myHero && myHero.id === hid)) return;
+  const h = allHeroes.find(x => x.id === hid);
+  if (h) setMyHero(h, false);
+}
+setInterval(tryAutofillHero, 5000);
+
+/* ---------- history tab ---------- */
+const SVGNS = 'http://www.w3.org/2000/svg';
+const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const el = (tag, attrs = {}, txt) => {
+  const n = document.createElementNS(SVGNS, tag);
+  for (const k in attrs) n.setAttribute(k, attrs[k]);
+  if (txt != null) n.textContent = txt;
+  return n;
+};
+const mmss = s => { s = Math.max(0, Math.round(s || 0)); return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`; };
+const resClass = w => w === 1 ? 'w' : w === 0 ? 'l' : 'u';
+const resText  = w => w === 1 ? 'W' : w === 0 ? 'L' : '?';
+const avg1 = n => (n == null ? '—' : (+n).toFixed(1));
+const fmtDate = ts => ts ? new Date(ts * 1000).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' }) : '—';
+
+async function loadHistory() {
+  let d;
+  try { d = await (await fetch('/api/history')).json(); } catch (e) { return; }
+  const matches = d.matches || [], sum = d.summary || {};
+  $('histEmpty').hidden = matches.length > 0;
+  $('histList').hidden = matches.length === 0;
+  $('matchDetail').hidden = true;
+  $('histList').style.display = '';
+  if (!matches.length) return;
+  renderMatchTable(matches);  // drives KPIs/sparks/hero table via the type filter
+}
+
+/* recompute aggregates client-side so they respect the match-type filter */
+function computeSummary(ms) {
+  const n = ms.length;
+  const avg = k => { const v = ms.filter(m => m[k] != null).map(m => m[k]); return v.length ? v.reduce((a, b) => a + b, 0) / v.length : null; };
+  const hm = {};
+  ms.forEach(m => {
+    const h = hm[m.hero] || (hm[m.hero] = { hero: m.hero, games: 0, wins: 0, k: 0, d: 0, a: 0, gpm: 0 });
+    h.games++; if (m.win === 1) h.wins++;
+    h.k += m.kills || 0; h.d += m.deaths || 0; h.a += m.assists || 0; h.gpm += m.gpm || 0;
+  });
+  const heroes = Object.values(hm).map(h => ({ hero: h.hero, games: h.games, wins: h.wins,
+    k: h.k / h.games, d: h.d / h.games, a: h.a / h.games, gpm: h.gpm / h.games }))
+    .sort((x, y) => y.games - x.games);
+  return {
+    totals: { games: n, wins: ms.filter(m => m.win === 1).length, losses: ms.filter(m => m.win === 0).length,
+      k: avg('kills'), d: avg('deaths'), a: avg('assists'), gpm: avg('gpm'), xpm: avg('xpm'),
+      lh: avg('last_hits'), cs10: avg('cs_at_10'), avg_deaths: avg('deaths'), dur: avg('duration_s') },
+    heroes, recent: ms.slice(0, 20).reverse(),
+  };
+}
+
+function renderKpis(t) {
+  const games = t.games || 0, wins = t.wins || 0, losses = t.losses || 0;
+  const wr = (wins + losses) ? Math.round(100 * wins / (wins + losses)) : 0;
+  const kda = ((t.k || 0) + (t.a || 0)) / Math.max(1, t.d || 0);
+  const kpis = [
+    ['Record', `${wins}–${losses}`, `${wr}% win rate`],
+    ['Games', games, 'recorded'],
+    ['Avg KDA', kda.toFixed(2), `${avg1(t.k)}/${avg1(t.d)}/${avg1(t.a)}`],
+    ['Avg GPM', Math.round(t.gpm || 0), `${Math.round(t.xpm || 0)} xpm`],
+    ['Avg CS@10', Math.round(t.cs10 || 0), 'last hits at 10:00'],
+    ['Avg deaths', avg1(t.avg_deaths), `${mmss(t.dur)} avg length`],
+  ];
+  $('kpis').innerHTML = '';
+  kpis.forEach(([label, v, sub]) => {
+    const c = document.createElement('div');
+    c.className = 'card kpi';
+    c.innerHTML = `<div class="label">${label}</div><div class="v num">${v}</div>` +
+                  `<div class="sub num">${sub}</div>`;
+    $('kpis').appendChild(c);
+  });
+}
+
+/* bar sparkline: green bar = win, red = loss, height ∝ value */
+function sparkBars(svg, vals, results, invert) {
+  svg.innerHTML = '';
+  const W = svg.clientWidth || 480, H = 54, pad = 2, n = vals.length;
+  if (!n) return;
+  const bw = (W - pad * 2) / n, max = Math.max(1, ...vals.map(v => v || 0));
+  vals.forEach((v, i) => {
+    const h = Math.max(2, ((v || 0) / max) * (H - 14));
+    const y = invert ? pad : H - h;
+    const w = results[i];
+    const fill = w === 1 ? css('--pos') : w === 0 ? css('--neg') : css('--muted');
+    svg.appendChild(el('rect', { x: pad + i * bw + 1, y, width: Math.max(1, bw - 2), height: h,
+      rx: 2, fill, opacity: 0.9 }));
+    svg.appendChild(el('text', { x: pad + i * bw + bw / 2, y: invert ? y + h + 11 : y - 3,
+      'text-anchor': 'middle', 'font-size': 9, fill: css('--muted') }, v == null ? '' : Math.round(v)));
+  });
+}
+function renderSparks(recent) {
+  sparkBars($('sparkGpm'), recent.map(r => r.gpm), recent.map(r => r.win), false);
+  sparkBars($('sparkDeaths'), recent.map(r => r.deaths), recent.map(r => r.win), true);
+}
+
+/* ---- paging ---------------------------------------------------------- */
+/* The type filter is the global scope: it drives the KPIs, the sparklines and
+   both tables. The per-table search boxes only narrow the rows you're looking
+   at, so the headline numbers never shift under you while you hunt for a row. */
+const PAGE_SIZES = [25, 50, 100, 200];
+const pageState = {
+  matches: { page: 1, size: 50 },
+  heroes:  { page: 1, size: 25 },
+};
+
+function renderPager(host, key, total, redraw) {
+  const st = pageState[key];
+  const pages = Math.max(1, Math.ceil(total / st.size));
+  if (st.page > pages) st.page = pages;
+  host.innerHTML = '';
+
+  const btn = (label, disabled, target) => {
+    const b = document.createElement('button');
+    b.textContent = label;
+    b.disabled = disabled;
+    b.onclick = () => { st.page = target; redraw(); };
+    return b;
+  };
+  host.appendChild(btn('\u00ab First', st.page <= 1, 1));
+  host.appendChild(btn('\u2039 Prev',  st.page <= 1, st.page - 1));
+
+  const info = document.createElement('span');
+  info.className = 'pinfo';
+  const from = total ? (st.page - 1) * st.size + 1 : 0;
+  info.textContent = total
+    ? `${from}\u2013${Math.min(total, st.page * st.size)} of ${total}  \u00b7  page ${st.page} / ${pages}`
+    : 'nothing to show';
+  host.appendChild(info);
+
+  host.appendChild(btn('Next \u203a', st.page >= pages, st.page + 1));
+  host.appendChild(btn('Last \u00bb', st.page >= pages, pages));
+
+  const sp = document.createElement('span');
+  sp.className = 'spacer';
+  host.appendChild(sp);
+
+  const sel = document.createElement('select');
+  sel.title = 'Rows per page';
+  sel.innerHTML = PAGE_SIZES.map(n =>
+    `<option value="${n}"${n === st.size ? ' selected' : ''}>${n} / page</option>`).join('');
+  sel.onchange = () => {
+    // Keep the first visible row visible across a page-size change.
+    const anchor = (st.page - 1) * st.size;
+    st.size = +sel.value;
+    st.page = Math.floor(anchor / st.size) + 1;
+    redraw();
+  };
+  host.appendChild(sel);
+  return { from: (st.page - 1) * st.size, to: st.page * st.size };
+}
+
+function emptyRow(tb, cols, text) {
+  const tr = document.createElement('tr');
+  tr.className = 'empty-row';
+  tr.innerHTML = `<td colspan="${cols}">${text}</td>`;
+  tb.appendChild(tr);
+}
+
+/* ---- hero history ---------------------------------------------------- */
+let ALL_HEROES = [];
+const heroSort = { key: 'games', dir: -1 };   // dir: -1 descending, 1 ascending
+
+function renderHeroTable(heroes) {
+  ALL_HEROES = heroes.map(h => ({
+    ...h,
+    wr:  h.games ? 100 * h.wins / h.games : 0,
+    kda: (h.k + h.a) / Math.max(0.1, h.d),
+  }));
+  drawHeroRows();
+}
+
+function drawHeroRows() {
+  const q = ($('heroSearch').value || '').trim().toLowerCase();
+  const rows = (q ? ALL_HEROES.filter(h => (h.hero || '').toLowerCase().includes(q)) : ALL_HEROES).slice();
+  const k = heroSort.key, dir = heroSort.dir;
+  rows.sort((a, b) => k === 'hero'
+    ? dir * String(a.hero).localeCompare(String(b.hero))
+    : dir * ((a[k] || 0) - (b[k] || 0)));   // dir -1 => biggest first
+
+  $('heroCount').textContent = `${rows.length} hero${rows.length === 1 ? '' : 'es'}` +
+    (q ? ` matching "${q}"` : '');
+
+  const { from, to } = renderPager($('heroPager'), 'heroes', rows.length, drawHeroRows);
+  const tb = $('heroTable').querySelector('tbody');
+  tb.innerHTML = '';
+  if (!rows.length) { emptyRow(tb, 5, q ? 'No hero matches that name.' : 'No games yet.'); return; }
+
+  const frag = document.createDocumentFragment();
+  rows.slice(from, to).forEach(h => {
+    const wr = Math.round(h.wr);
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td>${h.hero}</td><td class="n">${h.games}</td>` +
+      `<td class="n ${wr >= 50 ? 'pos' : 'neg'}">${wr}%</td>` +
+      `<td class="n">${avg1(h.k)}/${avg1(h.d)}/${avg1(h.a)}</td>` +
+      `<td class="n">${Math.round(h.gpm || 0)}</td>`;
+    frag.appendChild(tr);
+  });
+  tb.appendChild(frag);
+}
+
+$('heroTable').querySelectorAll('th.sortable').forEach(th => {
+  th.onclick = () => {
+    const key = th.dataset.key;
+    // Same column toggles direction; a new column starts in its natural order
+    // (biggest first for numbers, A-Z for the hero name).
+    if (heroSort.key === key) heroSort.dir *= -1;
+    else { heroSort.key = key; heroSort.dir = key === 'hero' ? 1 : -1; }
+    $('heroTable').querySelectorAll('th.sortable').forEach(o => {
+      o.classList.toggle('sorted', o === th);
+      o.classList.toggle('asc', o === th && heroSort.dir === 1);
+    });
+    pageState.heroes.page = 1;
+    drawHeroRows();
+  };
+});
+$('heroSearch').addEventListener('input', () => { pageState.heroes.page = 1; drawHeroRows(); });
+
+/* ---- match history --------------------------------------------------- */
+let ALL_MATCHES = [], SCOPED_MATCHES = [];
+
+function renderMatchTable(matches) {
+  ALL_MATCHES = matches;
+  const types = [...new Set(matches.map(m => m.match_type || 'Unknown'))];
+  const tf = $('typeFilter'), cur = tf.value;
+  tf.innerHTML = '<option value="">All types</option>' +
+    types.map(t => `<option value="${t}">${t}</option>`).join('');
+  tf.value = types.includes(cur) ? cur : '';
+  applyTypeFilter();
+}
+
+/* Scope change: recompute the headline stats, then redraw both tables. */
+function applyTypeFilter() {
+  const filter = $('typeFilter').value;
+  SCOPED_MATCHES = filter
+    ? ALL_MATCHES.filter(m => (m.match_type || 'Unknown') === filter)
+    : ALL_MATCHES;
+  const s = computeSummary(SCOPED_MATCHES);
+  renderKpis(s.totals);
+  renderSparks(s.recent);
+  renderHeroTable(s.heroes);
+  pageState.matches.page = 1;
+  drawMatchRows();
+}
+
+function drawMatchRows() {
+  const q = ($('matchSearch').value || '').trim().toLowerCase();
+  const rows = q ? SCOPED_MATCHES.filter(m => (m.hero || '').toLowerCase().includes(q)) : SCOPED_MATCHES;
+
+  $('matchCount').textContent = `${rows.length} match${rows.length === 1 ? '' : 'es'}` +
+    (q ? ` matching "${q}"` : '');
+
+  const { from, to } = renderPager($('matchPager'), 'matches', rows.length, drawMatchRows);
+  const tb = $('matchTable').querySelector('tbody');
+  tb.innerHTML = '';
+  if (!rows.length) { emptyRow(tb, 10, q ? 'No match on that hero.' : 'No matches of this type.'); return; }
+
+  const frag = document.createDocumentFragment();
+  rows.slice(from, to).forEach(m => {
+    const tr = document.createElement('tr');
+    tr.innerHTML =
+      `<td class="res ${resClass(m.win)}">${resText(m.win)}</td>` +
+      `<td style="white-space:nowrap; color:var(--ink-2)">${fmtDate(m.start_time)}</td>` +
+      `<td>${m.hero}</td>` +
+      `<td><span class="mtype mt-${(m.match_type || 'unknown').toLowerCase()}">${m.match_type || '\u2014'}</span></td>` +
+      `<td class="n">${m.kills}/${m.deaths}/${m.assists}</td>` +
+      `<td class="n">${m.gpm}/${m.xpm}</td>` +
+      `<td class="n">${m.last_hits}/${m.denies ?? 0}</td>` +
+      `<td class="n">${m.cs_at_10 ?? '\u2014'}</td>` +
+      `<td class="n">${mmss(m.duration_s)}</td>` +
+      `<td class="n">${m.net_worth != null ? (m.net_worth / 1000).toFixed(1) + 'k' : '\u2014'}</td>`;
+    tr.onclick = () => openMatch(m.match_id);
+    frag.appendChild(tr);
+  });
+  tb.appendChild(frag);
+}
+$('typeFilter').addEventListener('change', applyTypeFilter);
+$('matchSearch').addEventListener('input', () => { pageState.matches.page = 1; drawMatchRows(); });
+
+/* ---- history sub-tabs ------------------------------------------------ */
+function showHistView(name) {
+  $('viewMatches').hidden = name !== 'matches';
+  $('viewHeroes').hidden  = name !== 'heroes';
+  $('subMatches').classList.toggle('active', name === 'matches');
+  $('subHeroes').classList.toggle('active', name === 'heroes');
+}
+$('subMatches').onclick = () => showHistView('matches');
+$('subHeroes').onclick  = () => showHistView('heroes');
+
+/* line chart: multiple series over clock time. series = [{pts:[[x,y]], color, label}] */
+function lineChart(vals, series, xmax) {
+  const W = 560, H = 200, L = 44, R = 10, T = 10, B = 22;
+  const svg = el('svg', { class: 'chart', viewBox: `0 0 ${W} ${H}`, preserveAspectRatio: 'none' });
+  const ymax = Math.max(1, ...series.flatMap(s => s.pts.map(p => p[1])));
+  const sx = x => L + (x / Math.max(1, xmax)) * (W - L - R);
+  const sy = y => T + (1 - y / ymax) * (H - T - B);
+  // gridlines + y labels
+  for (let i = 0; i <= 4; i++) {
+    const gy = T + (i / 4) * (H - T - B);
+    svg.appendChild(el('line', { x1: L, y1: gy, x2: W - R, y2: gy, stroke: css('--line'), 'stroke-width': 1 }));
+    svg.appendChild(el('text', { x: L - 6, y: gy + 3, 'text-anchor': 'end', 'font-size': 9,
+      fill: css('--muted') }, Math.round(ymax * (1 - i / 4))));
+  }
+  // x labels (minutes)
+  for (let mnt = 0; mnt <= xmax / 60; mnt += 5) {
+    svg.appendChild(el('text', { x: sx(mnt * 60), y: H - 6, 'text-anchor': 'middle', 'font-size': 9,
+      fill: css('--muted') }, mnt + "'"));
+  }
+  series.forEach(s => {
+    const dpath = s.pts.map((p, i) => (i ? 'L' : 'M') + sx(p[0]).toFixed(1) + ' ' + sy(p[1]).toFixed(1)).join(' ');
+    svg.appendChild(el('path', { d: dpath, fill: 'none', stroke: s.color, 'stroke-width': 2 }));
+  });
+  return svg;
+}
+
+/* death map: your death positions on the Dota map square (-8300..8300) */
+function deathMap(deaths) {
+  const S = 240;
+  const svg = el('svg', { class: 'map', viewBox: `0 0 ${S} ${S}` });
+  svg.appendChild(el('line', { x1: 0, y1: S, x2: S, y2: 0, stroke: css('--border'), 'stroke-width': 1, 'stroke-dasharray': '4 4' }));
+  const norm = v => (v + 8300) / 16600;
+  deaths.forEach(d => {
+    if (d.x == null || d.y == null) return;
+    const cx = norm(d.x) * S, cy = (1 - norm(d.y)) * S;
+    svg.appendChild(el('circle', { cx, cy, r: 6, fill: css('--neg'), opacity: 0.55 }));
+    svg.appendChild(el('text', { x: cx, y: cy + 3, 'text-anchor': 'middle', 'font-size': 8,
+      fill: '#fff', 'font-weight': 700 }, d.death_number));
+  });
+  return svg;
+}
+
+async function openMatch(id) {
+  let d;
+  try { d = await (await fetch('/api/match/' + id)).json(); } catch (e) { return; }
+  if (!d || d.error) return;
+  const m = d.match, ts = d.timeseries || [], dur = m.duration_s || 1;
+  $('histList').style.display = 'none';
+  const box = $('matchDetail');
+  box.hidden = false;
+
+  box.innerHTML = `
+    <button class="back" id="histBack">← All matches</button>
+    <div class="card" style="margin-top:10px">
+      <div style="display:flex; align-items:baseline; gap:12px; flex-wrap:wrap">
+        <span class="res ${resClass(m.win)}" style="font-size:26px">${resText(m.win)}</span>
+        <span style="font-size:22px; font-weight:700">${m.hero}</span>
+        <span class="mtype mt-${(m.match_type || 'unknown').toLowerCase()}">${m.match_type || '—'}</span>
+        ${m.level != null ? `<span class="chip">lvl ${m.level}</span>` : ''}
+        ${m.team ? `<span class="chip">${m.team}</span>` : ''}
+        <span class="chip">${mmss(m.duration_s)}</span>
+        <span class="chip">${m.kills} / ${m.deaths} / ${m.assists}</span>
+        <span class="chip">${m.gpm} GPM</span>
+        ${m.net_worth != null ? `<span class="chip">net worth ${(m.net_worth / 1000).toFixed(1)}k</span>` : ''}
+      </div>
+    </div>
+    <div class="card" id="reviewCard" style="margin-top:12px">
+      <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap">
+        <div class="label">Deep review — benchmarks, lane, and a Claude coaching write-up</div>
+        <button class="back" id="reviewBtn">Generate review</button>
+      </div>
+      <div id="reviewOut" style="margin-top:10px"></div>
+    </div>
+    <div id="detailBody"></div>`;
+
+  $('histBack').onclick = () => { box.hidden = true; $('histList').style.display = ''; };
+  $('reviewBtn').onclick = () => runReview(id);
+  renderDetailBody(d, id);
+}
+
+function renderDetailBody(d, id) {
+  const body = $('detailBody'), m = d.match, ts = d.timeseries || [], dur = m.duration_s || 1;
+
+  // OpenDota match with no detail yet. The background backfill handles recent
+  // matches on its own; this is the manual path for anything it hasn't reached.
+  if (d.od_only && !d.parsed) {
+    const noReplay = d.parse_status === 'unavailable';
+    const msg = d.od_error
+      ? "Couldn't reach OpenDota just now \u2014 hit Fetch detail to retry."
+      : noReplay
+        ? 'OpenDota has no replay for this match, so minute-by-minute detail can\'t be rebuilt. '
+          + 'Replays expire after roughly two months \u2014 the summary above is all that survives.'
+        : d.parse_status === 'error'
+          ? "OpenDota couldn't be reached \u2014 try again in a moment."
+          : 'Minute-by-minute detail (net-worth and last-hit curves, build order, teamfight '
+            + 'death map) needs a parse from OpenDota. Fetching one takes about a minute.';
+    body.innerHTML = `<div class="card" style="margin-top:12px; color:var(--ink-2)">
+      This match is from your OpenDota history. ${msg}
+      <div style="margin-top:10px; display:flex; align-items:center; gap:10px">
+        ${noReplay ? '' : '<button class="back" id="parseBtn">Fetch detail</button>'}
+        <span id="parseNote" style="font-size:13px; color:var(--muted)"></span>
+      </div>
+    </div>`;
+    if (noReplay) return;
+    $('parseBtn').onclick = async () => {
+      const btn = $('parseBtn');
+      btn.disabled = true;
+      btn.textContent = 'Fetching\u2026';
+      // /parse requests the parse AND waits for OpenDota's job, so one click is
+      // enough — no "come back in a minute and press it again".
+      $('parseNote').textContent = 'Asking OpenDota to parse the replay, this takes ~1 minute\u2026';
+      try {
+        const r = await fetch(`/api/match/${id}/parse`);
+        renderDetailBody(await r.json(), id);
+      } catch (e) {
+        btn.disabled = false;
+        btn.textContent = 'Fetch detail';
+        $('parseNote').textContent = 'That request failed \u2014 try again.';
+      }
+    };
+    return;
+  }
+
+  const isOD = d.source === 'opendota';
+  const c1label = isOD ? 'Net worth over time' : 'Net worth &amp; gold over time';
+  const c1legend = isOD
+    ? `<span><i style="background:${css('--warn')}"></i>Net worth</span>`
+    : `<span><i style="background:${css('--warn')}"></i>Net worth</span><span><i style="background:${css('--good')}"></i>Unspent gold</span>`;
+  const c2label = isOD ? 'Last hits over time' : 'XP level &amp; last hits';
+  const c2legend = isOD
+    ? `<span><i style="background:${css('--ink-2')}"></i>Last hits</span>`
+    : `<span><i style="background:${css('--blue')}"></i>Level</span><span><i style="background:${css('--ink-2')}"></i>Last hits</span>`;
+  const mapLabel = isOD ? `Death map (${d.deaths.length}) — teamfight deaths only`
+                        : `Death map (${d.deaths.length} deaths)`;
+
+  body.innerHTML = `
+    <div class="grid2" style="margin-top:12px">
+      <div class="card"><div class="label">${c1label}</div><div id="cGold"></div>
+        <div class="legend">${c1legend}</div></div>
+      <div class="card"><div class="label">${c2label}</div><div id="cXp"></div>
+        <div class="legend">${c2legend}</div></div>
+    </div>
+    <div class="grid2" style="margin-top:12px">
+      <div class="card"><div class="label">${mapLabel}</div>
+        <div id="cMap" style="display:flex; justify-content:center; margin-top:8px"></div></div>
+      <div class="card"><div class="label">Build order</div>
+        <div class="build" id="cBuild" style="margin-top:8px"></div></div>
+    </div>
+    ${isOD ? `<div style="font-size:12px; color:var(--muted); margin-top:8px">From OpenDota's parsed replay. The death map covers teamfight deaths only — solo/lane deaths aren't in OpenDota's data (games played with the assistant capture every death).</div>` : ''}`;
+
+  const pts = key => ts.map(r => [r.clock, r[key] || 0]);
+  if (isOD) {
+    $('cGold').appendChild(lineChart(ts, [{ pts: pts('net_worth'), color: css('--warn') }], dur));
+    $('cXp').appendChild(lineChart(ts, [{ pts: pts('last_hits'), color: css('--ink-2') }], dur));
+  } else {
+    $('cGold').appendChild(lineChart(ts, [
+      { pts: pts('net_worth'), color: css('--warn') },
+      { pts: pts('gold'), color: css('--good') },
+    ], dur));
+    $('cXp').appendChild(lineChart(ts, [
+      { pts: pts('level'), color: css('--blue') },
+      { pts: pts('last_hits'), color: css('--ink-2') },
+    ], dur));
+  }
+  $('cMap').appendChild(deathMap(d.deaths || []));
+
+  const build = $('cBuild');
+  (d.items || []).forEach(it => {
+    const b = document.createElement('div');
+    b.className = 'b';
+    b.innerHTML = `<b>${it.item}</b><span>${mmss(it.first_seen)}</span>`;
+    build.appendChild(b);
+  });
+  if (!d.items.length) build.innerHTML = '<span style="color:var(--muted)">No items recorded.</span>';
+}
+
+/* ---------- deep review (Phase C) ---------- */
+async function runReview(id) {
+  const out = $('reviewOut'), btn = $('reviewBtn');
+  btn.disabled = true;
+  out.innerHTML = '<span style="color:var(--muted)">Analysing (OpenDota + Claude, ~10s)…</span>';
+  let r;
+  try { r = await (await fetch('/api/review/' + id)).json(); }
+  catch (e) { out.innerHTML = '<span class="neg">Review request failed.</span>'; btn.disabled = false; return; }
+  if (r.error) { out.innerHTML = `<span class="neg">${r.error}</span>`; btn.disabled = false; return; }
+  renderReview(out, r);
+  btn.disabled = false; btn.textContent = 'Regenerate';
+}
+
+function mdLite(t) {
+  const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  return esc(t).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>');
+}
+
+function renderReview(out, r) {
+  const a = r.analysis, c = r.coach || {};
+  let h = '';
+  if (a.match_type) {
+    h += `<div style="margin-bottom:8px">Match type: <span class="mtype mt-${a.match_type.toLowerCase()}">${a.match_type}</span>` +
+         (a.match_type === 'Turbo' ? ' <span style="color:var(--muted); font-size:12px">— benchmarks judged for Turbo economy</span>' : '') + '</div>';
+  }
+  if (a.lane) {
+    const o = a.lane.outcome, cls = o === 'won' ? 'pos' : o === 'lost' ? 'neg' : '';
+    h += `<div style="margin-bottom:10px">Lane: <b class="${cls}">${o.toUpperCase()}</b> — ` +
+         `${a.lane.cs_at_10} CS@10 vs ~${a.lane.target} target.</div>`;
+  }
+  if (a.percentiles && a.percentiles.length) {
+    h += '<div class="section-h">Benchmark percentiles (this hero)</div>';
+    a.percentiles.forEach(p => {
+      const col = p.pct >= 60 ? 'var(--pos)' : p.pct >= 40 ? 'var(--warn)' : 'var(--neg)';
+      h += `<div class="pbar"><span class="pl">${p.stat}</span>` +
+           `<span class="pt"><span class="pf" style="width:${p.pct}%; background:${col}"></span></span>` +
+           `<span class="pv">${p.pct}%</span></div>`;
+    });
+  }
+  if (!a.parsed) {
+    h += '<div style="font-size:12px; color:var(--muted); margin:6px 0">' +
+         'Requested a full parse from OpenDota — regenerate in ~1 min for lane-role &amp; item-timing detail.</div>';
+  }
+  h += '<div class="section-h">Coach</div>';
+  h += c.text ? `<div class="coach-md">${mdLite(c.text)}</div>`
+             : `<div style="color:var(--muted)">${c.error || 'No coach output.'}</div>`;
+  out.innerHTML = h;
+}
+
+/* ---------- improve tab (Phase D) ---------- */
+async function loadImprove() {
+  let r;
+  try { r = await (await fetch('/api/improve')).json(); } catch (e) { return; }
+  const out = $('improveOut');
+  if (!r.games) { $('improveEmpty').hidden = false; out.innerHTML = ''; return; }
+  $('improveEmpty').hidden = true;
+  const sevColor = s => s === 'high' ? 'var(--neg)' : s === 'med' ? 'var(--warn)' : 'var(--muted)';
+  let h = '';
+
+  if (r.focus) {
+    h += `<div class="card focus"><div class="label">Top focus — work this first</div>` +
+         `<div class="focus-t">${r.focus.title}</div>` +
+         `<div class="focus-m">${r.focus.metric}</div>` +
+         `<div class="focus-d">${r.focus.detail}</div></div>`;
+  }
+
+  h += `<div class="section-h">All findings (${r.games} games)</div>`;
+  r.findings.forEach(f => {
+    h += `<div class="card finding" style="border-left:3px solid ${sevColor(f.severity)}">` +
+         `<div class="fh"><span class="ft">${f.title}</span><span class="fsev">${f.severity}</span></div>` +
+         `<div class="fm">${f.metric}</div><div class="fd">${f.detail}</div>`;
+    if (f.buckets) {
+      const max = Math.max(...Object.values(f.buckets), 1);
+      h += '<div class="dwin">' + Object.entries(f.buckets).map(([k, v]) =>
+        `<div class="dw"><div class="dwbar" style="height:${Math.round(90 * v / max) + 4}%"></div>` +
+        `<div class="dwv">${v}</div><div class="dwl">${k}</div></div>`).join('') + '</div>';
+    }
+    h += '</div>';
+  });
+  if (!r.findings.length) h += '<div style="color:var(--muted)">No weaknesses flagged — clean record so far.</div>';
+
+  const hp = r.hero_pool || {};
+  if ((hp.best && hp.best.length) || (hp.worst && hp.worst.length)) {
+    const pool = (title, list, good) => `<div class="card"><div class="label">${title}</div>` +
+      (list.length ? list.map(x => `<div class="hprow"><span>${x.hero}</span>` +
+        `<span class="${good ? 'pos' : 'neg'}">${x.winrate}%</span>` +
+        `<span class="hpg">${x.games}g · ${x.kda}</span></div>`).join('')
+        : '<span style="color:var(--muted)">Not enough games yet.</span>') + '</div>';
+    h += '<div class="section-h">Hero pool</div><div class="grid2">' +
+         pool('Best win rate', hp.best || [], true) +
+         pool('Needs work (&lt;50%)', hp.worst || [], false) + '</div>';
+  }
+  out.innerHTML = h;
+}
+
+/* ---------- settings tab ---------- */
+async function loadSettings() {
+  let items;
+  try { items = (await (await fetch('/api/settings')).json()).announce; } catch (e) { return; }
+  const groups = {};
+  items.forEach(it => (groups[it.category] = groups[it.category] || []).push(it));
+
+  const wrap = $('setGroups');
+  wrap.innerHTML = '';
+  Object.keys(groups).forEach(cat => {
+    const h = document.createElement('div');
+    h.className = 'section-h';
+    h.textContent = cat;
+    wrap.appendChild(h);
+
+    const card = document.createElement('div');
+    card.className = 'card';
+    groups[cat].forEach(it => {
+      const row = document.createElement('div');
+      row.className = 'setRow';
+      row.innerHTML =
+        `<div class="meta"><div class="name">${it.label}</div>` +
+        `<div class="desc">${it.description || ''}</div></div>` +
+        `<label class="sw"><input type="checkbox" ${it.enabled ? 'checked' : ''}>` +
+        `<span class="track"></span><span class="knob"></span></label>`;
+      const box = row.querySelector('input');
+      box.onchange = () => saveSetting(it.key, box.checked, it.label);
+      card.appendChild(row);
+    });
+    wrap.appendChild(card);
+  });
+}
+
+async function saveSetting(key, enabled, label) {
+  const st = $('setStatus');
+  try {
+    const r = await (await fetch('/api/settings', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ key, enabled }),
+    })).json();
+    if (!r.ok) throw new Error(r.error || 'failed');
+    st.textContent = `${label} ${enabled ? 'enabled' : 'muted'} ✓`;
+    st.style.color = 'var(--good)';
+  } catch (e) {
+    st.textContent = `Couldn't save ${label} — is the server running?`;
+    st.style.color = 'var(--neg)';
+  }
+  setTimeout(() => { st.textContent = ''; }, 2500);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+{
+"towers": {
+"dota_goodguys_tower1_bot": [
+4924,
+-6128
+],
+"dota_goodguys_tower1_mid": [
+-1544,
+-1408
+],
+"dota_goodguys_tower1_top": [
+-6256,
+1816
+],
+"dota_goodguys_tower2_bot": [
+-104,
+-6320
+],
+"dota_goodguys_tower2_mid": [
+-3168,
+-3024
+],
+"dota_goodguys_tower2_top": [
+-6160,
+-872
+],
+"dota_goodguys_tower3_bot": [
+-3952,
+-6112
+],
+"dota_goodguys_tower3_mid": [
+-4640,
+-4144
+],
+"dota_goodguys_tower3_top": [
+-6592,
+-3408
+],
+"dota_goodguys_tower4_bot": [
+-5392,
+-5192
+],
+"dota_goodguys_tower4_top": [
+-5712,
+-4864
+],
+"dota_badguys_tower1_bot": [
+6269,
+-1729
+],
+"dota_badguys_tower1_mid": [
+524,
+652
+],
+"dota_badguys_tower1_top": [
+-4672,
+6016
+],
+"dota_badguys_tower2_bot": [
+6208,
+384
+],
+"dota_badguys_tower2_mid": [
+2496,
+2112
+],
+"dota_badguys_tower2_top": [
+0,
+6016
+],
+"dota_badguys_tower3_bot": [
+6336,
+3032
+],
+"dota_badguys_tower3_mid": [
+4272,
+3759
+],
+"dota_badguys_tower3_top": [
+3552,
+5776
+],
+"dota_badguys_tower4_bot": [
+5280,
+4432
+],
+"dota_badguys_tower4_top": [
+4944,
+4776
+],
+"good_rax_range_bot": [
+-4279,
+-5853
+],
+"good_rax_range_mid": [
+-5060,
+-4199
+],
+"good_rax_range_top": [
+-6844,
+-3759
+],
+"good_rax_melee_bot": [
+-4280,
+-6360
+],
+"good_rax_melee_mid": [
+-4672,
+-4552
+],
+"good_rax_melee_top": [
+-6336,
+-3758
+],
+"bad_rax_range_bot": [
+6064,
+3376
+],
+"bad_rax_range_mid": [
+4336,
+4183
+],
+"bad_rax_range_top": [
+3894,
+6025
+],
+"bad_rax_melee_bot": [
+6592,
+3392
+],
+"bad_rax_melee_mid": [
+4702,
+3824
+],
+"bad_rax_melee_top": [
+3898,
+5496
+],
+"dota_badguys_fort": [
+5528,
+5000
+],
+"dota_goodguys_fort": [
+-5920,
+-5352
+]
+},
+"extras": {
+"roshan": [
+-2464,
+2016
+],
+"fountain_bad": [
+7472,
+6912
+],
+"fountain_good": [
+-7456,
+-6938
+]
+}
+}

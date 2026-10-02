@@ -1,0 +1,7127 @@
+{
+  "npc_dota_hero_abaddon": {
+    "name": "Abaddon",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "+65 Curse of Avernus Attack Speed Bonus"
+          },
+          {
+            "slot": 8,
+            "text": "350 AoE Mist Coil"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+80 Aphotic Shield Barrier Amount"
+          },
+          {
+            "slot": 6,
+            "text": "100 Borrowed Time Immolation DPS"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "-10s Borrowed Time Cooldown"
+          },
+          {
+            "slot": 4,
+            "text": "+35 Mist Coil Damage / Heal"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+25 Curse of Avernus DPS"
+          },
+          {
+            "slot": 2,
+            "text": "Aphotic Shield provides +8 HP Regen"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_abyssal_underlord": {
+    "name": "Underlord",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "+0.4s Pit of Malice Root"
+          },
+          {
+            "slot": 8,
+            "text": "160 DPS in 700 Radius Around Fiend's Gate"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+0.6% Firestorm Burn Damage"
+          },
+          {
+            "slot": 6,
+            "text": "+10% Atrophy Aura Attack Damage Reduction/Gain"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "Pit of Malice Slows by 20%"
+          },
+          {
+            "slot": 4,
+            "text": "-5s Firestorm Cooldown"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+5% Invading Force Movement Bonus/Damage Reduction"
+          },
+          {
+            "slot": 2,
+            "text": "+15s Atrophy Aura Duration"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_alchemist": {
+    "name": "Alchemist",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "+50 Chemical Rage Movement Speed"
+          },
+          {
+            "slot": 8,
+            "text": "+50 Chemical Rage Regeneration"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "-0.1s Chemical Rage Base Attack Time"
+          },
+          {
+            "slot": 6,
+            "text": "+400 Unstable Concoction Max Damage"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+1% Corrosive Weaponry Slow/Damage Reduction Per Stack"
+          },
+          {
+            "slot": 4,
+            "text": "Greevil's Greed provides +3 Damage per stack"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+1 Acid Spray Armor Reduction"
+          },
+          {
+            "slot": 2,
+            "text": "+150 Unstable Concoction Radius"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_ancient_apparition": {
+    "name": "Ancient Apparition",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "450 AoE Cold Feet"
+          },
+          {
+            "slot": 8,
+            "text": "+4% Ice Blast Kill Threshold"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+4s Ice Blast Frostbitten Duration"
+          },
+          {
+            "slot": 6,
+            "text": "+80 Chilling Touch Damage"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "-2s Ice Vortex Cooldown"
+          },
+          {
+            "slot": 4,
+            "text": "+250 Cold Feet Break Distance"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+300 Chilling Touch Attack Range"
+          },
+          {
+            "slot": 2,
+            "text": "+30 Cold Feet Damage Per Second"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_antimage": {
+    "name": "Anti-Mage",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "-1s Blink Cooldown"
+          },
+          {
+            "slot": 8,
+            "text": "-50s Mana Void Cooldown"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+125 Blink Cast Range"
+          },
+          {
+            "slot": 6,
+            "text": "+0.8s Mana Void Stun"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+9%/18% Persecutor Min/Max Movement Slow"
+          },
+          {
+            "slot": 4,
+            "text": "+0.2 Mana Void Damage Multiplier"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+3 Health Regen"
+          },
+          {
+            "slot": 2,
+            "text": "+200 Mana Void Radius"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_arc_warden": {
+    "name": "Arc Warden",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "+1.5 Runic Infusion All Attributes Bonus"
+          },
+          {
+            "slot": 8,
+            "text": "+30s Spark Wraith Duration"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+200 Spark Wraith Damage"
+          },
+          {
+            "slot": 6,
+            "text": "-5s Magnetic Field Cooldown"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+20% Flux Slow"
+          },
+          {
+            "slot": 4,
+            "text": "+25 Magnetic Field Attack Speed"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+200 Flux Cast Range"
+          },
+          {
+            "slot": 2,
+            "text": "+200 Health"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_axe": {
+    "name": "Axe",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "+85 Berserker's Call AoE"
+          },
+          {
+            "slot": 8,
+            "text": "+150 Culling Blade Damage"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+15 Strength"
+          },
+          {
+            "slot": 6,
+            "text": "+40 Counter Helix Damage"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+8 Battle Hunger Damage Per Second"
+          },
+          {
+            "slot": 4,
+            "text": "+10 Berserker's Call Armor"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+3s Culling Blade Kill Buff Bonus Duration"
+          },
+          {
+            "slot": 2,
+            "text": "+8% Movement Speed per active Battle Hunger"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_bane": {
+    "name": "Bane",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "+275 Brain Sap Damage/Heal"
+          },
+          {
+            "slot": 8,
+            "text": "+3s Fiend's Grip Duration"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "-3s Nightmare Cooldown"
+          },
+          {
+            "slot": 6,
+            "text": "+30 Movement Speed"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+13 Enfeeble Damage Per Second"
+          },
+          {
+            "slot": 4,
+            "text": "+5% Fiend's Grip Max Mana Drain"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+125 Brain Sap Cast Range"
+          },
+          {
+            "slot": 2,
+            "text": "+20% Enfeeble Cast Range Reduction"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_batrider": {
+    "name": "Batrider",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "+0.75s Flaming Lasso Duration"
+          },
+          {
+            "slot": 8,
+            "text": "Flamebreak applies 4 Sticky Napalm Stacks"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "Attacks apply 1 Stack of Sticky Napalm"
+          },
+          {
+            "slot": 6,
+            "text": "-6s Flamebreak Cooldown"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+30 Firefly Damage Per Second"
+          },
+          {
+            "slot": 4,
+            "text": "+0.5% Sticky Napalm Movement Slow"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+5% Firefly Max Movement Speed Bonus"
+          },
+          {
+            "slot": 2,
+            "text": "+1s Smoldering Resin Duration"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_beastmaster": {
+    "name": "Beastmaster",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "No Wild Axes Cooldown"
+          },
+          {
+            "slot": 8,
+            "text": "-25s Primal Roar Cooldown"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+30 Damage to Beastmaster and his summons"
+          },
+          {
+            "slot": 6,
+            "text": "+250 Health to Beastmaster and his summons"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+15 Movespeed to Beastmaster and his summons"
+          },
+          {
+            "slot": 4,
+            "text": "+200 Primal Roar Cast Range"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+5 Armor"
+          },
+          {
+            "slot": 2,
+            "text": "+1.5% Wild Axes Damage Amp Per Stack"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_bloodseeker": {
+    "name": "Bloodseeker",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "+3s Blood Rite Silence Duration"
+          },
+          {
+            "slot": 8,
+            "text": "+15% Max Thirst MS"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+400 Rupture Cast Range"
+          },
+          {
+            "slot": 6,
+            "text": "+15 Agility"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "-0.7% Bloodrage Max Health DPS"
+          },
+          {
+            "slot": 4,
+            "text": "+100 Blood Rite Damage"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+200 Health"
+          },
+          {
+            "slot": 2,
+            "text": "+30 Bloodrage Attack Speed"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_bounty_hunter": {
+    "name": "Bounty Hunter",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "+250 Shuriken Toss Damage"
+          },
+          {
+            "slot": 8,
+            "text": "No Cooldown on Jinada"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "Track Grants Shared Vision"
+          },
+          {
+            "slot": 6,
+            "text": "+50 Jinada Gold Steal"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "-30% Damage Taken in Shadow Walk"
+          },
+          {
+            "slot": 4,
+            "text": "+50 Track Gold"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+0.6s Shuriken Toss Slow"
+          },
+          {
+            "slot": 2,
+            "text": "+30 Damage"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_brewmaster": {
+    "name": "Brewmaster",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "50%x Drunken Brawler Stance Bonuses"
+          },
+          {
+            "slot": 8,
+            "text": "Cinder Brew applies Fear when ignited"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "-12s Primal Split Cooldown"
+          },
+          {
+            "slot": 6,
+            "text": "+110 Attack Speed"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+40%% Cinder Brew Damage/Duration"
+          },
+          {
+            "slot": 4,
+            "text": "+600 Brewlings Health"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+13 Brewlings Base Damage"
+          },
+          {
+            "slot": 2,
+            "text": "+2/1s Drunken Brawler Brew Up/Extend Duration"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_bristleback": {
+    "name": "Bristleback",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "-30 Bristleback Damage Threshold"
+          },
+          {
+            "slot": 8,
+            "text": "+18 Warpath Damage Per Stack"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+25 Health Regen"
+          },
+          {
+            "slot": 6,
+            "text": "+20 Quill Stack Damage"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+250 Goo Cast Range"
+          },
+          {
+            "slot": 4,
+            "text": "+4%/8% Bristleback Back/Side Damage Reduction"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+25 Attack Speed"
+          },
+          {
+            "slot": 2,
+            "text": "+1.5 Mana Regen"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_broodmother": {
+    "name": "Broodmother",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "-0.15s BAT during Insatiable Hunger"
+          },
+          {
+            "slot": 8,
+            "text": "+7% Spin Web Move Speed and Ignore Speed Limit"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "-6s Spin Web Charge Restore Time"
+          },
+          {
+            "slot": 6,
+            "text": "+20% Incapacitating Bite Slow/Miss Chance"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+5 Incapacitating Bite Attack Bonus"
+          },
+          {
+            "slot": 4,
+            "text": "+175 Spiderlings Health"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+80 Spawn Spiderlings Damage"
+          },
+          {
+            "slot": 2,
+            "text": "+20% Insatiable Hunger Lifesteal"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_centaur": {
+    "name": "Centaur Warrunner",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "Gains Retaliate Aura"
+          },
+          {
+            "slot": 8,
+            "text": "+1s Hoof Stomp Duration"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+45 Retaliate Damage"
+          },
+          {
+            "slot": 6,
+            "text": "-25s Stampede Cooldown"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+10 Strength"
+          },
+          {
+            "slot": 4,
+            "text": "+30% Double Edge Strength Damage"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+4 Health Regen"
+          },
+          {
+            "slot": 2,
+            "text": "+15 Movement Speed"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_chaos_knight": {
+    "name": "Chaos Knight",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "+10% Chaos Strike Chance"
+          },
+          {
+            "slot": 8,
+            "text": "-125% Phantasm Illusion Incoming Damage"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+0.6 Min/Max Chaos Bolt Duration"
+          },
+          {
+            "slot": 6,
+            "text": "Reality Rift Pierces Spell Immunity"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "-3s Chaos Bolt Cooldown"
+          },
+          {
+            "slot": 4,
+            "text": "+10 Strength"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+30% Chaos Strike Lifesteal"
+          },
+          {
+            "slot": 2,
+            "text": "+225 Reality Rift Pull Distance"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_chen": {
+    "name": "Chen",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "Hand of God applies a Strong Dispel"
+          },
+          {
+            "slot": 8,
+            "text": "Hand of God Fully Heals Chen and His Creeps"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+15% Divine Favor Heal Amplification"
+          },
+          {
+            "slot": 6,
+            "text": "+1300 Holy Persuasion Minimum Health"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+12% Holy Persuasion Damage"
+          },
+          {
+            "slot": 4,
+            "text": "-15% Penitence Slow"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+75 Penitence Damage"
+          },
+          {
+            "slot": 2,
+            "text": "special_bonus_unique_chen_zealot"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_clinkz": {
+    "name": "Clinkz",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "-9s Strafe Cooldown"
+          },
+          {
+            "slot": 8,
+            "text": "Searing Arrows Multishot"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+40 Strafe Attack Speed"
+          },
+          {
+            "slot": 6,
+            "text": "+400 Death Pact Bonus Health"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+50 Attack Range"
+          },
+          {
+            "slot": 4,
+            "text": "-10s Death Pact Charge Restore Time"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+1s Strafe Duration"
+          },
+          {
+            "slot": 2,
+            "text": "-4s Skeleton Walk Cooldown"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_crystal_maiden": {
+    "name": "Crystal Maiden",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "+1s Frostbite Duration"
+          },
+          {
+            "slot": 8,
+            "text": "+300 Crystal Nova Damage"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+20% Glacial Guard Mana Spent To Barrier"
+          },
+          {
+            "slot": 6,
+            "text": "+50 Freezing Field Damage"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+100 Frostbite Cast Range"
+          },
+          {
+            "slot": 4,
+            "text": "-4.5s Crystal Nova Cooldown"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+200 Health"
+          },
+          {
+            "slot": 2,
+            "text": "+12 Intelligence"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_dark_seer": {
+    "name": "Dark Seer",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "2 Ion Shell Charges"
+          },
+          {
+            "slot": 8,
+            "text": "350 AoE Surge"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "-40s Wall of Replica Cooldown"
+          },
+          {
+            "slot": 6,
+            "text": "+50 Ion Shell Damage"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+75 Vacuum AoE"
+          },
+          {
+            "slot": 4,
+            "text": "-1.5s Surge Cooldown"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+15% Wall of Replica Illusion Damage"
+          },
+          {
+            "slot": 2,
+            "text": "+65 Ion Shell Radius"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_dark_willow": {
+    "name": "Dark Willow",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "+2 Bedlam Attack Targets"
+          },
+          {
+            "slot": 8,
+            "text": "500 Terrorize Impact Damage"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+1.5s Shadow Realm Duration"
+          },
+          {
+            "slot": 6,
+            "text": "-7s Bramble Maze CD"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+30 Bedlam Damage"
+          },
+          {
+            "slot": 4,
+            "text": "-20s Terrorize Cooldown"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+1s Bedlam Duration"
+          },
+          {
+            "slot": 2,
+            "text": "+12 Intelligence"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_dawnbreaker": {
+    "name": "Dawnbreaker",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "special_bonus_unique_dawnbreaker_fire_wreath_cooldown"
+          },
+          {
+            "slot": 8,
+            "text": "special_bonus_unique_dawnbreaker_celestial_hammer_cast_range"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "special_bonus_unique_dawnbreaker_solar_guardian_radius"
+          },
+          {
+            "slot": 6,
+            "text": "special_bonus_unique_dawnbreaker_luminosity_attack_count"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "special_bonus_unique_dawnbreaker_celestial_hammer_damage"
+          },
+          {
+            "slot": 4,
+            "text": "special_bonus_unique_dawnbreaker_solar_guardian_cooldown"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "special_bonus_unique_dawnbreaker_luminosity_crit"
+          },
+          {
+            "slot": 2,
+            "text": "special_bonus_unique_dawnbreaker_celestial_hammer_targets_allies"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_dazzle": {
+    "name": "Dazzle",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "+40% Poison Touch Slow"
+          },
+          {
+            "slot": 8,
+            "text": "+1 Weave Armor Reduction/Increase"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "-3s Shallow Grave Cooldown"
+          },
+          {
+            "slot": 6,
+            "text": "+75 Poison Touch DPS"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+45 Shadow Wave Heal / Damage"
+          },
+          {
+            "slot": 4,
+            "text": "special_bonus_unique_dazzle_nothl_projection_duration"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+200 Poison Touch Attack Range"
+          },
+          {
+            "slot": 2,
+            "text": "+1.75 Mana Regen"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_death_prophet": {
+    "name": "Death Prophet",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "-22s Spirit Siphon Replenish Time"
+          },
+          {
+            "slot": 8,
+            "text": "Deaths During Exorcism Extend Duration By +8s"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+6 Exorcism Spirits"
+          },
+          {
+            "slot": 6,
+            "text": "+30 Spirit Siphon Damage/Heal"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+50 Attack Speed"
+          },
+          {
+            "slot": 4,
+            "text": "-2.5s Crypt Swarm Cooldown"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+75 Silence AoE"
+          },
+          {
+            "slot": 2,
+            "text": "+200 Health"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_disruptor": {
+    "name": "Disruptor",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "2 Glimpse Charges"
+          },
+          {
+            "slot": 8,
+            "text": "+6 Thunder Strike Strikes"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+1s Kinetic Field Duration"
+          },
+          {
+            "slot": 6,
+            "text": "+75 Static Storm Radius"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+15%/300 Glimpse Distance To Damage/Max"
+          },
+          {
+            "slot": 4,
+            "text": "+60 Static Storm Max DPS"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+20 Movement Speed"
+          },
+          {
+            "slot": 2,
+            "text": "+15 Thunder Strike Damage per Strike"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_doom_bringer": {
+    "name": "Doom",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "Doom applies Mute"
+          },
+          {
+            "slot": 8,
+            "text": "Permanent Scorched Earth"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "-10s Doom Cooldown"
+          },
+          {
+            "slot": 6,
+            "text": "+1.5% Infernal Blade Max HP As Damage"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+7% Scorched Earth Movement Speed"
+          },
+          {
+            "slot": 4,
+            "text": "+66 Damage"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "Devour grants% Magic Resistance"
+          },
+          {
+            "slot": 2,
+            "text": "+0.2s Infernal Blade Stun Duration"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_dragon_knight": {
+    "name": "Dragon Knight",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "+12 Dragon Blood HP Regen/Armor"
+          },
+          {
+            "slot": 8,
+            "text": "+50%% Wyrm's Wrath Bonuses"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+150 Elder Dragon Form Attack Range"
+          },
+          {
+            "slot": 6,
+            "text": "+220 Breathe Fire Damage"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+0.4s Dragon Tail Stun"
+          },
+          {
+            "slot": 4,
+            "text": "+300 Health"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+15 Damage"
+          },
+          {
+            "slot": 2,
+            "text": "-2s Breathe Fire Cooldown"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_drow_ranger": {
+    "name": "Drow Ranger",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "+8% Marksmanship Chance"
+          },
+          {
+            "slot": 8,
+            "text": "+1 Multishot Wave"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "50% Gust Self Movement Speed"
+          },
+          {
+            "slot": 6,
+            "text": "+25% Multishot Damage"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+75 Attack Range"
+          },
+          {
+            "slot": 4,
+            "text": "-6s Multishot Cooldown"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "-18% Frost Arrows Mana Cost"
+          },
+          {
+            "slot": 2,
+            "text": "+1 Multishot Arrow Per Wave"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_earth_spirit": {
+    "name": "Earth Spirit",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "Earth Spirit Magnetizes himself"
+          },
+          {
+            "slot": 8,
+            "text": "+250 Geomagnetic Grip Remnant Damage"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+30% Magnetize Damage & Duration"
+          },
+          {
+            "slot": 6,
+            "text": "+175% Rolling Boulder Damage from Strength"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+0.3s Rolling Boulder Stun Duration"
+          },
+          {
+            "slot": 4,
+            "text": "+80 Boulder Smash Damage"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "-2.0s Boulder Smash Cooldown"
+          },
+          {
+            "slot": 2,
+            "text": "+150 Rolling Boulder Distance"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_earthshaker": {
+    "name": "Earthshaker",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "-50% Echo Slam Cooldown"
+          },
+          {
+            "slot": 8,
+            "text": "-1.5s Enchant Totem Cooldown"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+50 Echo Damage"
+          },
+          {
+            "slot": 6,
+            "text": "+65% Enchant Totem Damage"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+200 Fissure Range"
+          },
+          {
+            "slot": 4,
+            "text": "+50 Aftershock Damage"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+25 Base Damage"
+          },
+          {
+            "slot": 2,
+            "text": "+75 Fissure Damage"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_elder_titan": {
+    "name": "Elder Titan",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "-60s Earth Splitter Cooldown"
+          },
+          {
+            "slot": 8,
+            "text": "+100% Cleave"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+30 Astral Spirit Bonus Damage per Hero"
+          },
+          {
+            "slot": 6,
+            "text": "+150 Natural Order Radius"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+75 Echo Stomp Damage"
+          },
+          {
+            "slot": 4,
+            "text": "20% of Bonus Movement Speed as Attack Speed"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+2.5% Astral Spirit Bonus Move Speed Per Hero"
+          },
+          {
+            "slot": 2,
+            "text": "+150 Echo Stomp Wake Damage"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_ember_spirit": {
+    "name": "Ember Spirit",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "=2 Sleight of Fist Charges"
+          },
+          {
+            "slot": 8,
+            "text": "-12s Remnant Charge Restore Time"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+50 Sleight of Fist Hero Damage"
+          },
+          {
+            "slot": 6,
+            "text": "+50 Searing Chains Damage"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+100% Flame Guard Damage Per Second"
+          },
+          {
+            "slot": 4,
+            "text": "+0.8s Searing Chains Duration"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+12 Damage"
+          },
+          {
+            "slot": 2,
+            "text": "+165 Flame Guard Barrier Amount"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_enchantress": {
+    "name": "Enchantress",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "+6.5% Impetus Damage"
+          },
+          {
+            "slot": 8,
+            "text": "+80 Untouchable Attack Slow"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+9 Nature's Attendants Wisps"
+          },
+          {
+            "slot": 6,
+            "text": "+150 Health/+25 Damage for Enchantress and her units"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+30 Attack Speed for Enchantress and her units"
+          },
+          {
+            "slot": 4,
+            "text": "+8 Nature's Attendants Heal"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+5 Armor for Enchantress and her units"
+          },
+          {
+            "slot": 2,
+            "text": "+30 Movespeed during Nature's Attendants"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_enigma": {
+    "name": "Enigma",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "+4 Malefice Instances"
+          },
+          {
+            "slot": 8,
+            "text": "+4 Demonic Summoning Eidolons"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+200 Midnight Pulse Radius"
+          },
+          {
+            "slot": 6,
+            "text": "+40 Eidolon Damage"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+250 Health"
+          },
+          {
+            "slot": 4,
+            "text": "+100 Event Horizon Radius"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+10 Eidolon Attack Speed"
+          },
+          {
+            "slot": 2,
+            "text": "+50 Black Hole Damage Per Second"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_faceless_void": {
+    "name": "Faceless Void",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "+20% Backtrack Chance"
+          },
+          {
+            "slot": 8,
+            "text": "+140 Chronosphere AoE"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+80 Attack Speed during Chronosphere"
+          },
+          {
+            "slot": 6,
+            "text": "-1s Time Walk Cooldown"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+35 Time Lock Damage"
+          },
+          {
+            "slot": 4,
+            "text": "+125 Time Walk Range"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+6 Time Dilation DPS Per Cooldown"
+          },
+          {
+            "slot": 2,
+            "text": "+0.5s Time Walk Backtrack Duration"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_furion": {
+    "name": "Nature's Prophet",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "Removed Teleportation Cooldown"
+          },
+          {
+            "slot": 8,
+            "text": "3x Treant HP/Damage"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "-15s Wrath of Nature Cooldown"
+          },
+          {
+            "slot": 6,
+            "text": "+170 Sprout Damage"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+50 Treant Movement Speed"
+          },
+          {
+            "slot": 4,
+            "text": "+100 Teleportation Barrier"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "-10s Nature's Call Cooldown"
+          },
+          {
+            "slot": 2,
+            "text": "+25 Wrath of Nature Base Damage"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_grimstroke": {
+    "name": "Grimstroke",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "+150 Ink Swell Radius"
+          },
+          {
+            "slot": 8,
+            "text": "+70%% Stroke of Fate Speed and Travel Range"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+80%% Stroke of Fate Damage"
+          },
+          {
+            "slot": 6,
+            "text": "+2 Hits to Kill Phantom"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+25% Soulbind Spell Damage"
+          },
+          {
+            "slot": 4,
+            "text": "+15% Ink Swell Movement Speed"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+65 Phantom's Embrace DPS"
+          },
+          {
+            "slot": 2,
+            "text": "-4s Ink Swell Cooldown"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_gyrocopter": {
+    "name": "Gyrocopter",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "-6s Flak Cannon Cooldown"
+          },
+          {
+            "slot": 8,
+            "text": "-40s Call Down Cooldown"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+3 Flak Cannon Attacks"
+          },
+          {
+            "slot": 6,
+            "text": "+14 Rocket Barrage Damage"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+0.3s Homing Missile Stun Duration"
+          },
+          {
+            "slot": 4,
+            "text": "+25 Flak Cannon Damage"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+25%% Homing Missile Damage"
+          },
+          {
+            "slot": 2,
+            "text": "+150 Health"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_hoodwink": {
+    "name": "Hoodwink",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "+400 Sharpshooter Max Damage"
+          },
+          {
+            "slot": 8,
+            "text": "2 Acorn Shot Charges"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "Sharpshooter Provides Vision While Charging"
+          },
+          {
+            "slot": 6,
+            "text": "+2 Acorn Shot Bounces"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+1 Scurry Ability Charge"
+          },
+          {
+            "slot": 4,
+            "text": "+10 Agility"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+50 Bushwhack Damage"
+          },
+          {
+            "slot": 2,
+            "text": "+175 Health"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_huskar": {
+    "name": "Huskar",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "+6s Burning Spear Duration"
+          },
+          {
+            "slot": 8,
+            "text": "+0.22% Life Break Damage"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+30% Berserker's Blood Regen"
+          },
+          {
+            "slot": 6,
+            "text": "-5s Life Break Cooldown"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+5 Burning Spear Burn Damage"
+          },
+          {
+            "slot": 4,
+            "text": "+12% Lifesteal"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+0.75s Inner Fire Duration"
+          },
+          {
+            "slot": 2,
+            "text": "+2s Life Break Slow Duration"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_invoker": {
+    "name": "Invoker",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "Radial Deafening Blast"
+          },
+          {
+            "slot": 8,
+            "text": "2x Quas/Wex/Exort Active Bonuses"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+2 Chaos Meteors"
+          },
+          {
+            "slot": 6,
+            "text": "+1 Orb Levels"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+25 Alacrity Damage/Speed"
+          },
+          {
+            "slot": 4,
+            "text": "-6s Cold Snap Cooldown"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+50 Ice Wall DPS"
+          },
+          {
+            "slot": 2,
+            "text": "-5s Tornado Cooldown"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_jakiro": {
+    "name": "Jakiro",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "+100%% Dual Breath Damage and Range"
+          },
+          {
+            "slot": 8,
+            "text": "+3.5% Liquid Frost and Fire Max Health Damage"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+0.4s Ice Path Stun Duration"
+          },
+          {
+            "slot": 6,
+            "text": "+25 Macropyre Damage"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+175 Attack Range"
+          },
+          {
+            "slot": 4,
+            "text": "-3.5s Dual Breath Cooldown"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+30 Liquid Fire Attack Speed Slow"
+          },
+          {
+            "slot": 2,
+            "text": "+100 Ice Path Damage"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_juggernaut": {
+    "name": "Juggernaut",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "+1s Omnislash Duration"
+          },
+          {
+            "slot": 8,
+            "text": "+40% Blade Dance Lifesteal"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+15% Blade Dance Crit Damage"
+          },
+          {
+            "slot": 6,
+            "text": "+120 Blade Fury DPS"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "-15s Omnislash Cooldown"
+          },
+          {
+            "slot": 4,
+            "text": "45 Movement Speed During Blade Fury"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "-12s Healing Ward Cooldown"
+          },
+          {
+            "slot": 2,
+            "text": "-1.0s Bladeform Stack Gain Interval"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_keeper_of_the_light": {
+    "name": "Keeper of the Light",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "Chakra Magic Strong Dispels"
+          },
+          {
+            "slot": 8,
+            "text": "+200 Illuminate Damage"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+15s Spirit Form Duration"
+          },
+          {
+            "slot": 6,
+            "text": "+10% Solar Bind Magic Resistance Reduction"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+25% Spirit Form Bright Speed Bonus"
+          },
+          {
+            "slot": 4,
+            "text": "+90 Blinding Light Damage"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+40% Blinding Light Miss"
+          },
+          {
+            "slot": 2,
+            "text": "-2s Illuminate Cooldown"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_kez": {
+    "name": "Kez",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "+80% Shodo Sai Critical Strike"
+          },
+          {
+            "slot": 8,
+            "text": "+1 Echo Slash Attack"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+4% Kazurai Katana Damage Per Second"
+          },
+          {
+            "slot": 6,
+            "text": "=40 Bonus Attack Speed During Falcon Rush"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+2s Falcon Rush Duration"
+          },
+          {
+            "slot": 4,
+            "text": "+1 Raptor Dance Strike"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+12% Magic Resistance"
+          },
+          {
+            "slot": 2,
+            "text": "+50 Raptor Dance Radius"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_kunkka": {
+    "name": "Kunkka",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "+100 Spell Area of Effect"
+          },
+          {
+            "slot": 8,
+            "text": "Tidebringer Ignores 25% Armor"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "-4s Torrent Cooldown"
+          },
+          {
+            "slot": 6,
+            "text": "+80% Tidebringer Cleave Damage"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+25%% Torrent Damage/Knock Up Duration"
+          },
+          {
+            "slot": 4,
+            "text": "+75 Tidebringer Damage"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+1s Admiral's Rum Buff Duration"
+          },
+          {
+            "slot": 2,
+            "text": "Tidebringer applies 60% slow for 1s"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_largo": {
+    "name": "Largo",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "special_bonus_unique_largo_7"
+          },
+          {
+            "slot": 8,
+            "text": "special_bonus_unique_largo_8"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "special_bonus_unique_largo_5"
+          },
+          {
+            "slot": 6,
+            "text": "special_bonus_unique_largo_6"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "special_bonus_unique_largo_3"
+          },
+          {
+            "slot": 4,
+            "text": "special_bonus_unique_largo_4"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "special_bonus_unique_largo_1"
+          },
+          {
+            "slot": 2,
+            "text": "special_bonus_unique_largo_2"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_legion_commander": {
+    "name": "Legion Commander",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "+100% Moment of Courage Lifesteal"
+          },
+          {
+            "slot": 8,
+            "text": "Duel Refreshes Cooldown On Victory"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+0.75s Duel Duration"
+          },
+          {
+            "slot": 6,
+            "text": "-1 Moment of Courage Attacks To Trigger"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+40 Press The Attack HP Regen"
+          },
+          {
+            "slot": 4,
+            "text": "+35 Overwhelming Odds Damage per Hero"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "-2s Overwhelming Odds Cooldown"
+          },
+          {
+            "slot": 2,
+            "text": "+1 Outfight Them! Armor"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_leshrac": {
+    "name": "Leshrac",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "+20 Diabolic Edict Explosions"
+          },
+          {
+            "slot": 8,
+            "text": "Pulse Nova triggers Lightning Storm"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "Diabolic Edict Hits An Additional Target"
+          },
+          {
+            "slot": 6,
+            "text": "+30 Pulse Nova Damage"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+80 Lightning Storm Damage"
+          },
+          {
+            "slot": 4,
+            "text": "+10% Damage Reduction during Pulse Nova"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+1.5 Mana Regen"
+          },
+          {
+            "slot": 2,
+            "text": "+4 Armor"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_lich": {
+    "name": "Lich",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "Frost Shield Provides +50 HP Regen"
+          },
+          {
+            "slot": 8,
+            "text": "Chain Frost Unlimited Bounces"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "2 Frost Shield Charges"
+          },
+          {
+            "slot": 6,
+            "text": "Chain Frost on Death"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+0.3s Sinister Gaze Duration"
+          },
+          {
+            "slot": 4,
+            "text": "-3.5s Frost Blast Cooldown"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+10% Frost Shield Damage Reduction"
+          },
+          {
+            "slot": 2,
+            "text": "+125 Frost Blast Radius and Area Damage"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_life_stealer": {
+    "name": "Lifestealer",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "+1% Feast Heal and Damage"
+          },
+          {
+            "slot": 8,
+            "text": "+1s Rage Duration"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+12% Infest Target Movespeed/Health"
+          },
+          {
+            "slot": 6,
+            "text": "+25% Open Wounds Lifesteal"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+175 Infest Damage"
+          },
+          {
+            "slot": 4,
+            "text": "50 Attack Speed on Open Wounds Target"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+4 All Attributes"
+          },
+          {
+            "slot": 2,
+            "text": "+20 Movement Speed"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_lina": {
+    "name": "Lina",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "+1s Slow Burn Duration"
+          },
+          {
+            "slot": 8,
+            "text": "150% Attack Crit On Targets Affected By Slow Burn"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "-20s Laguna Blade Cooldown"
+          },
+          {
+            "slot": 6,
+            "text": "+10/1% Fiery Soul Per Stack"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "5% Fiery Soul Magic Resist Per Stack"
+          },
+          {
+            "slot": 4,
+            "text": "+110 Light Strike Array Damage"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+25 Damage"
+          },
+          {
+            "slot": 2,
+            "text": "-3s Dragon Slave Cooldown"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_lion": {
+    "name": "Lion",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "+250 AoE Hex"
+          },
+          {
+            "slot": 8,
+            "text": "+600 Earth Spike cast range/travel distance"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+20 Finger of Death Damage Per Kill"
+          },
+          {
+            "slot": 6,
+            "text": "Earth Spike affects a 30 degree cone"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "-2s Hex Cooldown"
+          },
+          {
+            "slot": 4,
+            "text": "+15% To Hell And Back Debuff/Spell Amp"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+10% Mana Drain Slow"
+          },
+          {
+            "slot": 2,
+            "text": "+20 Movement Speed"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_lone_druid": {
+    "name": "Lone Druid",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "True Form provides 70% Slow Resistance"
+          },
+          {
+            "slot": 8,
+            "text": "+0.6s Entangle Root Duration"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+150 Savage Roar Radius"
+          },
+          {
+            "slot": 6,
+            "text": "+55 Attack Speed"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "-5s Savage Roar Cooldown"
+          },
+          {
+            "slot": 4,
+            "text": "+12 Agility"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "-25s Summon Spirit Bear Cooldown"
+          },
+          {
+            "slot": 2,
+            "text": "+20 Entangle Root Damage Per Second"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_luna": {
+    "name": "Luna",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "+25/50 Lunar Blessing Allied/Self Damage"
+          },
+          {
+            "slot": 8,
+            "text": "Lucent Beam Hits An Additional Target"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "-40s Eclipse Cooldown"
+          },
+          {
+            "slot": 6,
+            "text": "50%x Lunar Orbit Damage/Speed"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+1 Lunar Orbit Glaive"
+          },
+          {
+            "slot": 4,
+            "text": "+80 Lucent Beam Damage"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "-5% Moon Glaives Damage Reduction"
+          },
+          {
+            "slot": 2,
+            "text": "+0.5s Lucent Beam Ministun"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_lycan": {
+    "name": "Lycan",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "-25%% Summon Wolves BAT"
+          },
+          {
+            "slot": 8,
+            "text": "Howl Reduces Total Attack Damage"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+7s Shapeshift Duration"
+          },
+          {
+            "slot": 6,
+            "text": "+25% Feral Impulse Damage"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+375 Summon Wolves Health"
+          },
+          {
+            "slot": 4,
+            "text": "-15s Shapeshift Cooldown"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+3 Howl Armor Reduction"
+          },
+          {
+            "slot": 2,
+            "text": "+14 Wolves Damage"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_magnataur": {
+    "name": "Magnus",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "Shockwave Returns to Magnus"
+          },
+          {
+            "slot": 8,
+            "text": "+0.8s Reverse Polarity Stun Duration"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+125 Shockwave Damage"
+          },
+          {
+            "slot": 6,
+            "text": "+15% Skewer Damage Per Distance Travelled"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+20 All Attributes per hero hit with Reverse Polarity"
+          },
+          {
+            "slot": 4,
+            "text": "-5s Skewer Cooldown"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+1.5 Mana Regen"
+          },
+          {
+            "slot": 2,
+            "text": "+1.25s Skewer Slow Duration"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_marci": {
+    "name": "Marci",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "Unleash Duration Extended By 6s On Kill"
+          },
+          {
+            "slot": 8,
+            "text": "Bodyguard Strong Dispels"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+0.75s Rebound Stun Duration"
+          },
+          {
+            "slot": 6,
+            "text": "+15% Unleash Movement Speed"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+100 Dispose Damage"
+          },
+          {
+            "slot": 4,
+            "text": "+12% Bodyguard Damage"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+1.5s Dispose Slow Duration"
+          },
+          {
+            "slot": 2,
+            "text": "+50 Rebound Landing Radius"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_mars": {
+    "name": "Mars",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "God's Rebuke +65% Crit"
+          },
+          {
+            "slot": 8,
+            "text": "Arena Of Blood Grants Team +180 HP Regen"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+70 Arena Of Blood Spear Damage"
+          },
+          {
+            "slot": 6,
+            "text": "+0.5s Spear of Mars Stun"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "-2.5s God's Rebuke Cooldown"
+          },
+          {
+            "slot": 4,
+            "text": "+100 Spear Of Mars Damage"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+100 God's Rebuke Distance"
+          },
+          {
+            "slot": 2,
+            "text": "+1.5 Mana Regen"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_medusa": {
+    "name": "Medusa",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "+2.5s Stone Gaze Duration"
+          },
+          {
+            "slot": 8,
+            "text": "+40 Intelligence"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+40%% Mystic Snake Damage/Mana Gain"
+          },
+          {
+            "slot": 6,
+            "text": "+12% Split Shot Outgoing Damage"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+1 Gorgon's Grasp Volley"
+          },
+          {
+            "slot": 4,
+            "text": "-4s Mystic Snake Cooldown"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+20%% Gorgon's Grasp Radius"
+          },
+          {
+            "slot": 2,
+            "text": "+12% Stone Gaze Bonus Physical Damage"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_meepo": {
+    "name": "Meepo",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "+400 Health"
+          },
+          {
+            "slot": 8,
+            "text": "-0.75s Poof Cast Duration"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "Earthbind grants True Strike on Targets"
+          },
+          {
+            "slot": 6,
+            "text": "+6 Ransack Health Steal"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+15% Evasion"
+          },
+          {
+            "slot": 4,
+            "text": "-1.5s Earthbind Cooldown"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+7 Strength"
+          },
+          {
+            "slot": 2,
+            "text": "+40 Poof Damage"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_mirana": {
+    "name": "Mirana",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "+2 Multishot Sacred Arrows"
+          },
+          {
+            "slot": 8,
+            "text": "-30s Moonlight Shadow Cooldown"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+200 Starstorm Damage"
+          },
+          {
+            "slot": 6,
+            "text": "+50 Celestial Quiver Damage"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "Moonlight Shadow gives +20% Evasion"
+          },
+          {
+            "slot": 4,
+            "text": "+90 Leap Attack Speed"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "-2s Starstorm Cooldown"
+          },
+          {
+            "slot": 2,
+            "text": "+150 Leap Distance"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_monkey_king": {
+    "name": "Monkey King",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "-1 Jingu Mastery Required Hits"
+          },
+          {
+            "slot": 8,
+            "text": "Additional Wukong's Command Ring"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "Jingu Mastery Undispellable"
+          },
+          {
+            "slot": 6,
+            "text": "+60% Boundless Strike Critical Damage"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "0 Cooldown Primal Spring"
+          },
+          {
+            "slot": 4,
+            "text": "+110 Jingu Mastery Damage"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+300 Tree Dance Cast Range"
+          },
+          {
+            "slot": 2,
+            "text": "+0.2s Boundless Strike Stun Duration"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_morphling": {
+    "name": "Morphling",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "-40%% Waveform Cooldown"
+          },
+          {
+            "slot": 8,
+            "text": "+35 Strength"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "-3s Adaptive Strike Cooldown"
+          },
+          {
+            "slot": 6,
+            "text": "+15 Agility"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+250 Waveform Range"
+          },
+          {
+            "slot": 4,
+            "text": "+75 Attack Range"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+15% Magic Resistance"
+          },
+          {
+            "slot": 2,
+            "text": "+12s Morph Duration"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_muerta": {
+    "name": "Muerta",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "special_bonus_unique_muerta_gunslinger_double_shot_chance"
+          },
+          {
+            "slot": 8,
+            "text": "special_bonus_unique_muerta_dead_shot_charges"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "special_bonus_unique_muerta_pierce_the_veil_duration"
+          },
+          {
+            "slot": 6,
+            "text": "The Calling summons 2 additional revenants"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+3% Max HP Regen while inside The Calling"
+          },
+          {
+            "slot": 4,
+            "text": "+15 Intelligence"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+300 Dead Shot Cast Range"
+          },
+          {
+            "slot": 2,
+            "text": "+20 Attack Speed"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_naga_siren": {
+    "name": "Naga Siren",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "-10s Mirror Image Cooldown"
+          },
+          {
+            "slot": 8,
+            "text": "+25 Agility"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "-25s Song of the Siren Cooldown"
+          },
+          {
+            "slot": 6,
+            "text": "+1 Mirror Image Illusion"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+10% Mirror Image Damage"
+          },
+          {
+            "slot": 4,
+            "text": "-75% Mirror Image Illusion Damage Taken"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+125 Reel In Pull Speed"
+          },
+          {
+            "slot": 2,
+            "text": "+30%% Rip Tide Damage"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_necrolyte": {
+    "name": "Necrophos",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "+0.3 Reaper's Scythe Damage Per Missing HP"
+          },
+          {
+            "slot": 8,
+            "text": "-2.5s Death Pulse Cooldown"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+75 Spell Area of Effect"
+          },
+          {
+            "slot": 6,
+            "text": "+20% Heartstopper Regen Reduction"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+15% Ghost Shroud Movement Slow"
+          },
+          {
+            "slot": 4,
+            "text": "+60 Death Pulse Heal"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "-2.5s Ghost Shroud Cooldown"
+          },
+          {
+            "slot": 2,
+            "text": "+2s Sadist Stack Duration"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_nevermore": {
+    "name": "Shadow Fiend",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "Feast of Souls Grants +30% Cast Speed"
+          },
+          {
+            "slot": 8,
+            "text": "Shadowraze Applies Attack Damage"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+2 Necromastery Max Souls"
+          },
+          {
+            "slot": 6,
+            "text": "+0.2s Requiem Fear per line"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+2 Presence Armor Reduction"
+          },
+          {
+            "slot": 4,
+            "text": "+2 Feast of Souls Souls Collected Per Hero"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+30 Shadowraze Stack Damage"
+          },
+          {
+            "slot": 2,
+            "text": "+30 Feast of Souls Attack Speed"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_night_stalker": {
+    "name": "Night Stalker",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "+100 Midnight Feast Lifesteal"
+          },
+          {
+            "slot": 8,
+            "text": "-35s Dark Ascension Cooldown"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+75 Crippling Fear Radius"
+          },
+          {
+            "slot": 6,
+            "text": "+15 Strength"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+25 Dark Ascension Damage"
+          },
+          {
+            "slot": 4,
+            "text": "20% Hunter in the Night Status Resistance"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "-1s Void Cooldown"
+          },
+          {
+            "slot": 2,
+            "text": "+10 Crippling Fear DPS"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_nyx_assassin": {
+    "name": "Nyx Assassin",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "600 Mind Flare Radius"
+          },
+          {
+            "slot": 8,
+            "text": "+80 Agility"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+0.6s Spiked Carapace Stun Duration"
+          },
+          {
+            "slot": 6,
+            "text": "+140 Impale Damage"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+50 Vendetta Damage"
+          },
+          {
+            "slot": 4,
+            "text": "-3s Mind Flare Cooldown"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+25% Spiked Carapace Damage Reflect"
+          },
+          {
+            "slot": 2,
+            "text": "+0.2s Impale Stun Duration"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_obsidian_destroyer": {
+    "name": "Outworld Devourer",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "+1.5% Arcane Orb Damage"
+          },
+          {
+            "slot": 8,
+            "text": "-60s Sanity's Eclipse Cooldown"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "-10s Objurgation Cooldown"
+          },
+          {
+            "slot": 6,
+            "text": "+12% Astral Imprisonment Mana Capacity Steal"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+5% Essence Flux Mana Restored"
+          },
+          {
+            "slot": 4,
+            "text": "+=0.8% of Current Mana as Movement Speed"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+100 Astral Imprisonment Cast Range"
+          },
+          {
+            "slot": 2,
+            "text": "+200 Mana"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_ogre_magi": {
+    "name": "Ogre Magi",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "special_bonus_unique_ogre_magi_3"
+          },
+          {
+            "slot": 8,
+            "text": "+10% Multicast Chance"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+30 Strength"
+          },
+          {
+            "slot": 6,
+            "text": "+175 Fireblast Damage"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+80 Damage"
+          },
+          {
+            "slot": 4,
+            "text": "+20/35 Bloodlust/Self Attack Speed"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+10 Ignite Burn Damage"
+          },
+          {
+            "slot": 2,
+            "text": "+2/0.01 Dumb Luck Mana/Mana Regen Per Strength"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_omniknight": {
+    "name": "Omniknight",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "+160 Purification Damage/Heal"
+          },
+          {
+            "slot": 8,
+            "text": "+75% Hammer of Purity Bonus Base Damage"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+150 Degen Aura Radius"
+          },
+          {
+            "slot": 6,
+            "text": "-3s Purification Cooldown"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "-0.5s Hammer of Purity Cooldown"
+          },
+          {
+            "slot": 4,
+            "text": "-20s Guardian Angel Cooldown"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+200 Repel Cast Range"
+          },
+          {
+            "slot": 2,
+            "text": "+30 Base Damage"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_oracle": {
+    "name": "Oracle",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "Fortune's End constantly Dispels"
+          },
+          {
+            "slot": 8,
+            "text": "+1.5s False Promise Duration"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "-20s False Promise Cooldown"
+          },
+          {
+            "slot": 6,
+            "text": "-1s Purifying Flames Cooldown"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+100 Fortune's End Radius"
+          },
+          {
+            "slot": 4,
+            "text": "+25%% Purifying Flames Enemy Damage"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+0.5s Fortune's End Duration"
+          },
+          {
+            "slot": 2,
+            "text": "+8 Armor False Promise"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_pangolier": {
+    "name": "Pangolier",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "+20% Attack Damage as Swashbuckle Damage"
+          },
+          {
+            "slot": 8,
+            "text": "-15s Rolling Thunder Cooldown"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+2s Rolling Thunder Duration"
+          },
+          {
+            "slot": 6,
+            "text": "-1.5s Shield Crash Cooldown"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "-2s Swashbuckle Cooldown"
+          },
+          {
+            "slot": 4,
+            "text": "+125 Shield Crash Barrier"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+3 Lucky Shot Armor Reduction"
+          },
+          {
+            "slot": 2,
+            "text": "+200 Swashbuckle Slash Range"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_phantom_assassin": {
+    "name": "Phantom Assassin",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "+10% Coup de Grace chance"
+          },
+          {
+            "slot": 8,
+            "text": "Triple Strike Stifling Dagger"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+200 Phantom Strike Cast Range"
+          },
+          {
+            "slot": 6,
+            "text": "+60 Phantom Strike Attack Speed"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+20% Immaterial Evasion"
+          },
+          {
+            "slot": 4,
+            "text": "+15% Stifling Dagger Damage"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+0.8s Phantom Strike Duration"
+          },
+          {
+            "slot": 2,
+            "text": "-2s Stifling Dagger Cooldown"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_phantom_lancer": {
+    "name": "Phantom Lancer",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "-4s Doppelganger Cooldown"
+          },
+          {
+            "slot": 8,
+            "text": "+2s Illusory Armaments Duration"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+100 Spirit Lance Damage"
+          },
+          {
+            "slot": 6,
+            "text": "-70% Juxtapose Illusion Damage Taken"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "50% Illusion Spirit Lance Damage"
+          },
+          {
+            "slot": 4,
+            "text": "+125 Doppelganger Cast Range"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+1s Spirit Lance Slow Duration"
+          },
+          {
+            "slot": 2,
+            "text": "+3% Juxtapose Illusion Trigger Chance"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_phoenix": {
+    "name": "Phoenix",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "+2 Supernova Hit Count"
+          },
+          {
+            "slot": 8,
+            "text": "+1000 Icarus Dive Cast Range"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+1.5% Max Health Sun Ray Damage"
+          },
+          {
+            "slot": 6,
+            "text": "+0.6s Supernova Stun Duration"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+20 Fire Spirits Damage Per Second"
+          },
+          {
+            "slot": 4,
+            "text": "+25 Health Regen"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+25% Icarus Dive Slow"
+          },
+          {
+            "slot": 2,
+            "text": "+1% Dying Light Missing Health as Damage"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_primal_beast": {
+    "name": "Primal Beast",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "special_bonus_unique_primal_beast_colossal_trample"
+          },
+          {
+            "slot": 8,
+            "text": "+67% Pulverize Duration"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+20% Trample Attack Multiplier"
+          },
+          {
+            "slot": 6,
+            "text": "Basic Self-Dispel on Uproar Cast"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "-5s Trample Cooldown"
+          },
+          {
+            "slot": 4,
+            "text": "+6 Uproar Armor Per Stack"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+30 Damage"
+          },
+          {
+            "slot": 2,
+            "text": "+25% Magic Resistance During Trample"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_puck": {
+    "name": "Puck",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "Dream Coil Pierces Debuff Immunity"
+          },
+          {
+            "slot": 8,
+            "text": "+350 Waning Rift Radius/Max Distance"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "-2.5s Waning Rift Cooldown"
+          },
+          {
+            "slot": 6,
+            "text": "+200 Initial/Break Dream Coil Damage"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "-30s Dream Coil Cooldown"
+          },
+          {
+            "slot": 4,
+            "text": "+60 Waning Rift Damage"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+35 Illusory Orb Damage"
+          },
+          {
+            "slot": 2,
+            "text": "+1.25s Waning Rift Silence Duration"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_pudge": {
+    "name": "Pudge",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "1.5x Dismember Damage/Heal"
+          },
+          {
+            "slot": 8,
+            "text": "1.5x Flesh Heap and Meat Shield bonuses"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+2s Dismember Duration"
+          },
+          {
+            "slot": 6,
+            "text": "-4s Meat Hook Cooldown"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+8% Spell Lifesteal"
+          },
+          {
+            "slot": 4,
+            "text": "+150 Meat Hook Damage"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+5 Armor"
+          },
+          {
+            "slot": 2,
+            "text": "+10% Rot Slow"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_pugna": {
+    "name": "Pugna",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "+200 Nether Blast Damage"
+          },
+          {
+            "slot": 8,
+            "text": "+1.9 Nether Ward Damage Per Mana"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+15% Life Drain Heal"
+          },
+          {
+            "slot": 6,
+            "text": "+1.5s Decrepify Duration"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+30% Decrepify Movement Speed To Allies"
+          },
+          {
+            "slot": 4,
+            "text": "+250 Health"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "-1s Nether Blast Cooldown"
+          },
+          {
+            "slot": 2,
+            "text": "+2 Nether Ward Health"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_queenofpain": {
+    "name": "Queen of Pain",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "-2s Blink Cooldown"
+          },
+          {
+            "slot": 8,
+            "text": "+250 Sonic Wave Damage"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+115 Scream of Pain Damage"
+          },
+          {
+            "slot": 6,
+            "text": "-45s Sonic Wave Cooldown"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "-1s Shadow Strike Damage Interval"
+          },
+          {
+            "slot": 4,
+            "text": "+30 Damage"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+35 Attack Speed against Shadow Striked units"
+          },
+          {
+            "slot": 2,
+            "text": "+7 Strength"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_rattletrap": {
+    "name": "Clockwerk",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "3 Rocket Flare Charges"
+          },
+          {
+            "slot": 8,
+            "text": "-0.25s Battery Assault Interval"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "Rocket Flare True Sight"
+          },
+          {
+            "slot": 6,
+            "text": "+80 Power Cogs Mana Burn"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "-8s Hookshot Cooldown"
+          },
+          {
+            "slot": 4,
+            "text": "+25 Battery Assault Damage"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+1.5 Mana Regen"
+          },
+          {
+            "slot": 2,
+            "text": "+75 Hookshot Damage"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_razor": {
+    "name": "Razor",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "Creates A Second Plasma Field Delayed By 0.8s"
+          },
+          {
+            "slot": 8,
+            "text": "Static Link Steals Attack Speed"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+35%% Storm Surge Slow and Damage"
+          },
+          {
+            "slot": 6,
+            "text": "-0.1s Eye of the Storm Strike Interval"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+6 Static Link Damage Steal"
+          },
+          {
+            "slot": 4,
+            "text": "+12 Strength"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+0.75s Plasma Field Slow Duration"
+          },
+          {
+            "slot": 2,
+            "text": "+4 Armor"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_riki": {
+    "name": "Riki",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "-4s Tricks of the Trade Cooldown"
+          },
+          {
+            "slot": 8,
+            "text": "+500 Blink Strike Cast Range"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+0.3 Backstab Multiplier"
+          },
+          {
+            "slot": 6,
+            "text": "-1s Blink Strike Cooldown"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "15% of Riki's Base damage added to Tricks of the Trade"
+          },
+          {
+            "slot": 4,
+            "text": "-3s Smoke Screen Cooldown"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+50 Smoke Screen Radius"
+          },
+          {
+            "slot": 2,
+            "text": "+10% Cloak and Dagger Movement Speed"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_sand_king": {
+    "name": "Sand King",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "+125 Stinger Damage"
+          },
+          {
+            "slot": 8,
+            "text": "35% Sand Storm Slow and Blind"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "-3s Burrowstrike Cooldown"
+          },
+          {
+            "slot": 6,
+            "text": "+6 Epicenter Pulses"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+25 Sand Storm Damage Per Second"
+          },
+          {
+            "slot": 4,
+            "text": "+200 Burrowstrike Cast Range"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+12% Stinger Slow"
+          },
+          {
+            "slot": 2,
+            "text": "+100 Caustic Finale Radius"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_shadow_demon": {
+    "name": "Shadow Demon",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "Demonic Purge Applies Shadow Poison"
+          },
+          {
+            "slot": 8,
+            "text": "=0.25 Charges of Disruption"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+15% Disseminate Shared Damage"
+          },
+          {
+            "slot": 6,
+            "text": "-20s Demonic Purge Cooldown"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+25 Movement Speed"
+          },
+          {
+            "slot": 4,
+            "text": "-1s Shadow Poison Cooldown"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+15%% Shadow Poison Damage"
+          },
+          {
+            "slot": 2,
+            "text": "+8 Strength"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_shadow_shaman": {
+    "name": "Shadow Shaman",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "+250 Ether Shock Damage"
+          },
+          {
+            "slot": 8,
+            "text": "+1 Ward Attack Targets"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+1.5s Shackles Duration"
+          },
+          {
+            "slot": 6,
+            "text": "+50%% Serpent Wards Max HP"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+160 Serpent Wards Attack Range"
+          },
+          {
+            "slot": 4,
+            "text": "Hex Breaks"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+170 Shackles Total Damage"
+          },
+          {
+            "slot": 2,
+            "text": "+1.75 Mana Regen"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_shredder": {
+    "name": "Timbersaw",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "+75 Whirling Death Tree Bonus Damage"
+          },
+          {
+            "slot": 8,
+            "text": "+75%% Timber Chain Range/Projectile Speed"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "Exposure Therapy Heals for 12 HP Per Tree Destroyed"
+          },
+          {
+            "slot": 6,
+            "text": "+6% Chakram Slow"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+2% Whirling Death Stat Loss"
+          },
+          {
+            "slot": 4,
+            "text": "+6 Max/+1 Hero Attack Reactive Armor Stacks"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+0.25 Reactive Armor Regeneration Per Stack"
+          },
+          {
+            "slot": 2,
+            "text": "+1.5 Mana Regen"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_silencer": {
+    "name": "Silencer",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "+30% Glaives of Wisdom Damage"
+          },
+          {
+            "slot": 8,
+            "text": "+2s Global Silence Duration"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+40s Glaives of Wisdom Int Steal Duration"
+          },
+          {
+            "slot": 6,
+            "text": "250 AoE Last Word"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "-15s Global Silence Cooldown"
+          },
+          {
+            "slot": 4,
+            "text": "special_bonus_unique_silencer_arcane_curse_duration"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+25 Attack Speed"
+          },
+          {
+            "slot": 2,
+            "text": "+7% Suffer In Silence Silenced Target Damage"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_skeleton_king": {
+    "name": "Wraith King",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "-2s Mortal Strike Cooldown"
+          },
+          {
+            "slot": 8,
+            "text": "Reincarnation Casts Wraithfire Blast"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+50 Attack Speed"
+          },
+          {
+            "slot": 6,
+            "text": "+5 Bone Guard Skeletons Spawned"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+0.75s Wraithfire Blast Stun Duration"
+          },
+          {
+            "slot": 4,
+            "text": "+350 Health"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+8% Vampiric Spirit Lifesteal"
+          },
+          {
+            "slot": 2,
+            "text": "+2s Wraithfire Blast Slow Duration"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_skywrath_mage": {
+    "name": "Skywrath Mage",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "+1.5x Arcane Bolt Int Multiplier"
+          },
+          {
+            "slot": 8,
+            "text": "+400 Mystic Flare Damage"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "Global Concussive Shot"
+          },
+          {
+            "slot": 6,
+            "text": "+10% Ancient Seal Increased Magic Damage"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "-6s Ancient Seal Cooldown"
+          },
+          {
+            "slot": 4,
+            "text": "+20% Concussive Shot Slow"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+1.5 Mana Regen"
+          },
+          {
+            "slot": 2,
+            "text": "+125 Arcane Bolt Cast Range"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_slardar": {
+    "name": "Slardar",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "-3s Slithereen Crush Cooldown"
+          },
+          {
+            "slot": 8,
+            "text": "Corrosive Haze Undispellable"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+125 Slithereen Crush Damage"
+          },
+          {
+            "slot": 6,
+            "text": "+16% Seaborn Sentinel Bonus Attack Damage"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+250 Health"
+          },
+          {
+            "slot": 4,
+            "text": "-3 Corrosive Haze Armor"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+2s Guardian Sprint Duration"
+          },
+          {
+            "slot": 2,
+            "text": "+30 Bash of the Deep Damage"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_slark": {
+    "name": "Slark",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "+1.5s Shadow Dance Duration"
+          },
+          {
+            "slot": 8,
+            "text": "+20s Essence Shift Duration"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+1 Agility gain/stolen per Essence Shift Stack"
+          },
+          {
+            "slot": 6,
+            "text": "+100 Shadow Dance Attack Speed"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+70 Dark Pact Damage"
+          },
+          {
+            "slot": 4,
+            "text": "+30 Shadow Dance Regen"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "-0.75s Dark Pact Cooldown"
+          },
+          {
+            "slot": 2,
+            "text": "+0.5s Pounce Leash"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_snapfire": {
+    "name": "Snapfire",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "+60% Lil' Shredder Attack Damage"
+          },
+          {
+            "slot": 8,
+            "text": "+8 Mortimer Kisses Launched"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+=2 Lil' Shredder Targets"
+          },
+          {
+            "slot": 6,
+            "text": "2 Firesnap Cookie Charges"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+2 Lil' Shredder attacks"
+          },
+          {
+            "slot": 4,
+            "text": "-3s Firesnap Cookie Cooldown"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+70 Scatterblast Damage"
+          },
+          {
+            "slot": 2,
+            "text": "+35 Mortimer Kisses Burn DPS"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_sniper": {
+    "name": "Sniper",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "-30s Shrapnel Charge Restore Time"
+          },
+          {
+            "slot": 8,
+            "text": "+50 Max Headshot Knockback Distance"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+2s Take Aim Duration"
+          },
+          {
+            "slot": 6,
+            "text": "+30%% Shrapnel Damage"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+45 Attack Speed During Take Aim"
+          },
+          {
+            "slot": 4,
+            "text": "+150 Assassinate Damage"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+50 Take Aim Passive Attack Range"
+          },
+          {
+            "slot": 2,
+            "text": "+30 Headshot Damage"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_spectre": {
+    "name": "Spectre",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "+15% All Spectre Illusion Damage"
+          },
+          {
+            "slot": 8,
+            "text": "+4% Dispersion"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+325 Health"
+          },
+          {
+            "slot": 6,
+            "text": "+15% Spectral Dagger Slow/Bonus"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+1s Shadow Step Duration"
+          },
+          {
+            "slot": 4,
+            "text": "+80 Spectral Dagger Damage"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "-3s Spectral Dagger Cooldown"
+          },
+          {
+            "slot": 2,
+            "text": "+12 Desolate Damage"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_spirit_breaker": {
+    "name": "Spirit Breaker",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "+20% Greater Bash Damage"
+          },
+          {
+            "slot": 8,
+            "text": "-4s Charge of Darkness Cooldown"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+8%/+2% Empowering Haste Movespeed Bonus"
+          },
+          {
+            "slot": 6,
+            "text": "Bulldoze 375 All Damage Barrier"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "-3s Bulldoze Cooldown"
+          },
+          {
+            "slot": 4,
+            "text": "+60 Charge of Darkness Bonus Speed"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+500 Night Vision"
+          },
+          {
+            "slot": 2,
+            "text": "+4 Armor"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_storm_spirit": {
+    "name": "Storm Spirit",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "=2x Overload Attack Bounce"
+          },
+          {
+            "slot": 8,
+            "text": "450 Distance Auto Remnant in Ball Lightning"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+0.2s Electric Vortex Duration"
+          },
+          {
+            "slot": 6,
+            "text": "-1.25s Static Remnant Cooldown"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+250 Health"
+          },
+          {
+            "slot": 4,
+            "text": "+60 Static Remnant Damage"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "-25 Overload Attack/Movement Speed Slow"
+          },
+          {
+            "slot": 2,
+            "text": "+1.5 Mana Regen"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_sven": {
+    "name": "Sven",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "+50% God's Strength Damage"
+          },
+          {
+            "slot": 8,
+            "text": "+1s Storm Hammer Stun Duration"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "-25%% Storm Hammer Cooldown and Mana Cost"
+          },
+          {
+            "slot": 6,
+            "text": "+8 Warcry Armor"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "-12s God's Strength Cooldown"
+          },
+          {
+            "slot": 4,
+            "text": "+25% Great Cleave Damage"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+5s Warcry Duration"
+          },
+          {
+            "slot": 2,
+            "text": "+20% God's Strength Slow Resistance"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_techies": {
+    "name": "Techies",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "+253 Damage"
+          },
+          {
+            "slot": 8,
+            "text": "-0.8s Proximity Mines Activation Delay"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+160 Sticky Bomb Damage"
+          },
+          {
+            "slot": 6,
+            "text": "-15s Blast Off! Cooldown"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+175 Blast Off! Damage"
+          },
+          {
+            "slot": 4,
+            "text": "+25%% Reactive Tazer Buff and Disarm Duration"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+20% Magic Resistance"
+          },
+          {
+            "slot": 2,
+            "text": "-2s Proximity Mines Cooldown"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_templar_assassin": {
+    "name": "Templar Assassin",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "=0.8s Meld Hit Bash"
+          },
+          {
+            "slot": 8,
+            "text": "+4 Refraction Instances"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "Refraction Dispels"
+          },
+          {
+            "slot": 6,
+            "text": "+4 Meld Armor Reduction"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+225 Meld Attack Range"
+          },
+          {
+            "slot": 4,
+            "text": "+3 Psionic Traps"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+1.5s Meld Debuff Duration"
+          },
+          {
+            "slot": 2,
+            "text": "+15% Psionic Trap Slow"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_terrorblade": {
+    "name": "Terrorblade",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "-30s Sunder Cooldown"
+          },
+          {
+            "slot": 8,
+            "text": "+30s Metamorphosis Duration"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+10 All Attributes"
+          },
+          {
+            "slot": 6,
+            "text": "+8s Conjure Image Duration"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "-10s Metamorphosis Cooldown"
+          },
+          {
+            "slot": 4,
+            "text": "-25% Sunder Minimum HP Swap"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+1s Reflection Duration"
+          },
+          {
+            "slot": 2,
+            "text": "-2s Conjure Image Cooldown"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_tidehunter": {
+    "name": "Tidehunter",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "+1s Ravage Stun Duration"
+          },
+          {
+            "slot": 8,
+            "text": "Anchor Smash affects buildings"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "Kraken Shell Cleanse triggers Anchor Smash"
+          },
+          {
+            "slot": 6,
+            "text": "-4 Gush Armor"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+90 Gush Damage"
+          },
+          {
+            "slot": 4,
+            "text": "-15s Ravage Cooldown"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+10% Anchor Smash Damage Reduction"
+          },
+          {
+            "slot": 2,
+            "text": "+20% Gush Slow"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_tinker": {
+    "name": "Tinker",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "250 AoE Laser"
+          },
+          {
+            "slot": 8,
+            "text": "-0.25s Time to Rearm"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+60 Deploy Turrets Missile Damage"
+          },
+          {
+            "slot": 6,
+            "text": "-0.5s Keen Conveyance Channel Time"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+100 Deploy Turrets Tinker Knockback"
+          },
+          {
+            "slot": 4,
+            "text": "+50 Laser Damage"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+1s March of the Machines Duration"
+          },
+          {
+            "slot": 2,
+            "text": "+10% Manacost/Manaloss Reduction"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_tiny": {
+    "name": "Tiny",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "-8s Avalanche Cooldown"
+          },
+          {
+            "slot": 8,
+            "text": "2 Toss Charges"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+60 Tree Grab Base Damage"
+          },
+          {
+            "slot": 6,
+            "text": "Toss Requires No Target"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "-2% Grow Attack Speed Reduction"
+          },
+          {
+            "slot": 4,
+            "text": "+90 Avalanche Damage"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+150 Avalanche Cast Range"
+          },
+          {
+            "slot": 2,
+            "text": "+8 Strength"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_treant": {
+    "name": "Treant Protector",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "-3s Leech Seed Cooldown"
+          },
+          {
+            "slot": 8,
+            "text": "450 AoE Living Armor"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+20 Living Armor Damage Block"
+          },
+          {
+            "slot": 6,
+            "text": "+80 Leech Seed Bonus Damage"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+10% Leech Seed Damage to Healing"
+          },
+          {
+            "slot": 4,
+            "text": "+25 Nature's Grasp Damage"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+3 Living Armor Heal Per Second"
+          },
+          {
+            "slot": 2,
+            "text": "+50 Base Damage"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_troll_warlord": {
+    "name": "Troll Warlord",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "Whirling Axes Pierce Magic Immunity"
+          },
+          {
+            "slot": 8,
+            "text": "Battle Trance Strong Dispels"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "Allies Receive Battle Trance Attack Speed"
+          },
+          {
+            "slot": 6,
+            "text": "+160 Whirling Axes Damage"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+4 Fervor Attack Speed"
+          },
+          {
+            "slot": 4,
+            "text": "+1s Battle Trance Duration"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+2.5s Whirling Axes Debuff Duration"
+          },
+          {
+            "slot": 2,
+            "text": "+20 Berserker's Rage Movement Speed"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_tusk": {
+    "name": "Tusk",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "Ice Shards slow by 50% and deal 110 DPS"
+          },
+          {
+            "slot": 8,
+            "text": "12% Chance Walrus Punch"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "-6s Snowball Cooldown"
+          },
+          {
+            "slot": 6,
+            "text": "+75% Walrus Punch Crit"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+325 Health"
+          },
+          {
+            "slot": 4,
+            "text": "+120 Snowball Damage"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+2s Tag Team Duration"
+          },
+          {
+            "slot": 2,
+            "text": "+0.75s Walrus Punch Stun Duration"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_undying": {
+    "name": "Undying",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "+50% Flesh Golem Strength Bonus"
+          },
+          {
+            "slot": 8,
+            "text": "Tombstone On Death"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "-2s Decay Cooldown"
+          },
+          {
+            "slot": 6,
+            "text": "+16 Tombstone Attacks to Destroy"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+12 Soul Rip Damage/Heal"
+          },
+          {
+            "slot": 4,
+            "text": "+20 Zombie Damage"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+30 Decay Damage"
+          },
+          {
+            "slot": 2,
+            "text": "-15s Tombstone Cooldown"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_ursa": {
+    "name": "Ursa",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "Earthshock has =0.25 Charges"
+          },
+          {
+            "slot": 8,
+            "text": "+3 Overpower Attacks"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+300 Earthshock Radius"
+          },
+          {
+            "slot": 6,
+            "text": "+6 Fury Swipes Damage"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+0.5% Maul Health As Damage"
+          },
+          {
+            "slot": 4,
+            "text": "+25% Enrage Status Resistance"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+9s Fury Swipes Reset Time"
+          },
+          {
+            "slot": 2,
+            "text": "+1.75 Mana Regen"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_vengefulspirit": {
+    "name": "Vengeful Spirit",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "+16% Vengeance Aura Base Damage Bonus"
+          },
+          {
+            "slot": 8,
+            "text": "-18s Nether Swap Cooldown"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "Wave Of Terror Steals 25% Of Reduced Damage And Armor"
+          },
+          {
+            "slot": 6,
+            "text": "-2s Magic Missile Cooldown"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "-3 Wave of Terror Armor"
+          },
+          {
+            "slot": 4,
+            "text": "+0.3s Magic Missile Stun Duration"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+150 Nether Swap Enemy Damage"
+          },
+          {
+            "slot": 2,
+            "text": "+100 Magic Missile Cast Range"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_venomancer": {
+    "name": "Venomancer",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "Snakebite Undispellable"
+          },
+          {
+            "slot": 8,
+            "text": "2.5x Plague Ward HP/Damage"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+100% Snakebite Damage"
+          },
+          {
+            "slot": 6,
+            "text": "-2s Plague Ward Cooldown"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+75 Noxious Plague Spread Radius"
+          },
+          {
+            "slot": 4,
+            "text": "+10% Poison Sting Slow"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "-5s Venomous Gale CD"
+          },
+          {
+            "slot": 2,
+            "text": "15% Poison Sting Health Regen Reduction"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_viper": {
+    "name": "Viper",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "Nethertoxin Radius increases by 25 every 0.5s"
+          },
+          {
+            "slot": 8,
+            "text": "-50%% Viper Strike Mana Cost/Cooldown"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+70 Viper Strike DPS"
+          },
+          {
+            "slot": 6,
+            "text": "+0.35 Predator Damage Per Missing Health"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+20/40 Nethertoxin Min/Max Damage"
+          },
+          {
+            "slot": 4,
+            "text": "+15%% Poison Attack Slow/Damage"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+1s Viper Strike Duration"
+          },
+          {
+            "slot": 2,
+            "text": "+15 Corrosive Skin Damage Per Second"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_visage": {
+    "name": "Visage",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "-2s Gravekeeper's Cloak Recovery Time"
+          },
+          {
+            "slot": 8,
+            "text": "+1 Familiar"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+30 Soul Assumption Damage Per Charge"
+          },
+          {
+            "slot": 6,
+            "text": "+1 Armor Corruption to Visage and Familiars"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+2s Grave Chill Duration"
+          },
+          {
+            "slot": 4,
+            "text": "Soul Assumption Hits =3 Targets"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "-1s Soul Assumption Cooldown"
+          },
+          {
+            "slot": 2,
+            "text": "+6 Visage and Familiars Base Damage"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_void_spirit": {
+    "name": "Void Spirit",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "140% Astral Step Crit"
+          },
+          {
+            "slot": 8,
+            "text": "Dissimilate Roots for 2s"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "Outer Dissimilate Ring"
+          },
+          {
+            "slot": 6,
+            "text": "-3s Astral Step Charge Restore Time"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+20%% Resonant Pulse Barrier"
+          },
+          {
+            "slot": 4,
+            "text": "+65 Aether Remnant Damage"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+1.5 Mana Regen"
+          },
+          {
+            "slot": 2,
+            "text": "+40 Resonant Pulse Damage"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_warlock": {
+    "name": "Warlock",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "Summons a Golem on death"
+          },
+          {
+            "slot": 8,
+            "text": "+5 Fatal Bonds Targets"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "80% Damage Resistance for Chaotic Offering Golems"
+          },
+          {
+            "slot": 6,
+            "text": "+=45 Upheaval Damage"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+8 Upheaval Attack Speed per second on Allies"
+          },
+          {
+            "slot": 4,
+            "text": "+150 Shadow Word AoE"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+4% Fatal Bonds Damage"
+          },
+          {
+            "slot": 2,
+            "text": "+50 Upheaval Radius"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_weaver": {
+    "name": "Weaver",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "-3s Shukuchi Cooldown"
+          },
+          {
+            "slot": 8,
+            "text": "+1 Geminate Attack"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+60 Bonus Damage On Geminate"
+          },
+          {
+            "slot": 6,
+            "text": "+0.5 Swarm Armor Reduction Per Attack"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+90 Shukuchi Damage"
+          },
+          {
+            "slot": 4,
+            "text": "+2 Swarm Attacks to Kill"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+50 Shukuchi Movement Speed"
+          },
+          {
+            "slot": 2,
+            "text": "+7 Strength"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_windrunner": {
+    "name": "Windranger",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "Powershot Executes Enemy Heroes Under 10% Max HP"
+          },
+          {
+            "slot": 8,
+            "text": "Focus Fire Kills Advance Cooldown by 2s"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+0.75s Shackleshot Duration"
+          },
+          {
+            "slot": 6,
+            "text": "-10% Focus Fire Damage Reduction"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+40 Tailwind Max Movespeed"
+          },
+          {
+            "slot": 4,
+            "text": "-15% Powershot Reduction"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+1s Powershot Slow Duration"
+          },
+          {
+            "slot": 2,
+            "text": "+0.75s Windrun Duration"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_winter_wyvern": {
+    "name": "Winter Wyvern",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "+60 Winter's Curse Attack Speed"
+          },
+          {
+            "slot": 8,
+            "text": "Splinter Blast 1s Stun"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+15% Arctic Burn Slow"
+          },
+          {
+            "slot": 6,
+            "text": "+100 Splinter Blast Damage"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+3s Arctic Burn Debuff Duration"
+          },
+          {
+            "slot": 4,
+            "text": "+175 Splinter Blast Shatter Radius"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+20 HP/s Cold Embrace Heal"
+          },
+          {
+            "slot": 2,
+            "text": "+35 Damage"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_wisp": {
+    "name": "Io",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "-2s Relocate Cast Delay"
+          },
+          {
+            "slot": 8,
+            "text": "Attack Tethered Ally's Target (=50% damage)"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+0.2% Overcharge Max HP Regen Bonus"
+          },
+          {
+            "slot": 6,
+            "text": "-30s Relocate Cooldown"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+5% Tether Movement Speed"
+          },
+          {
+            "slot": 4,
+            "text": "+50% Spirits Hero Damage"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+1.5s Overcharge Duration"
+          },
+          {
+            "slot": 2,
+            "text": "+8 Strength"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_witch_doctor": {
+    "name": "Witch Doctor",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "+6 Paralyzing Cask Bounces"
+          },
+          {
+            "slot": 8,
+            "text": "+40 Death Ward Damage"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "Maledict bursts deal 75% damage in a 800 AoE"
+          },
+          {
+            "slot": 6,
+            "text": "+1% Target Max Health Voodoo Restoration Heal"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "-3s Paralyzing Cask Cooldown"
+          },
+          {
+            "slot": 4,
+            "text": "+1s Maledict Duration"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "-0.75% Voodoo Restoration Mana Per Second"
+          },
+          {
+            "slot": 2,
+            "text": "+200 Health"
+          }
+        ]
+      }
+    ]
+  },
+  "npc_dota_hero_zuus": {
+    "name": "Zeus",
+    "tiers": [
+      {
+        "level": 25,
+        "options": [
+          {
+            "slot": 7,
+            "text": "325 AoE Lightning Bolt"
+          },
+          {
+            "slot": 8,
+            "text": "3 Heavenly Jump Charges"
+          }
+        ]
+      },
+      {
+        "level": 20,
+        "options": [
+          {
+            "slot": 5,
+            "text": "+60 Arc Lightning Damage"
+          },
+          {
+            "slot": 6,
+            "text": "+0.5s Lightning Bolt Ministun"
+          }
+        ]
+      },
+      {
+        "level": 15,
+        "options": [
+          {
+            "slot": 3,
+            "text": "+75 Thundergod's Wrath Damage"
+          },
+          {
+            "slot": 4,
+            "text": "-20%% Arc Lightning Mana Cost/Cooldown"
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "options": [
+          {
+            "slot": 1,
+            "text": "+1 Heavenly Jump Target"
+          },
+          {
+            "slot": 2,
+            "text": "+200 Health"
+          }
+        ]
+      }
+    ]
+  }
+}
