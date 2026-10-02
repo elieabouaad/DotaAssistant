@@ -1,0 +1,21 @@
+# Personal configuration & runtime state — never commit these
+config.toml
+settings.json
+stats.db
+logs/
+cache/
+
+# Python
+venv/
+.venv/
+__pycache__/
+*.pyc
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.ruff_cache/
+
+# Tooling / OS
+.claude/settings.local.json
+.DS_Store

@@ -1,0 +1,97 @@
+# Personal settings (separate from timings.toml, which tracks the patch).
+# Copy this file to `config.toml` in the directory you run `dota-assistant`
+# from (or in $DOTA_ASSISTANT_HOME) and edit. config.toml is gitignored —
+# it may contain your account id and Discord token, so never commit it.
+
+[player]
+# Your OpenDota / Dota-friend account id (the number in your opendota.com
+# profile URL). 0 = disabled. Requires "Expose Public Match Data" enabled in
+# the Dota 2 client for OpenDota to see your matches. Used to annotate draft
+# suggestions with your own games/winrate per hero.
+account_id = 0
+# Optional: calibrate the AI coach and draft defaults to you. All free text /
+# free choice; leave empty for neutral coaching.
+#   bracket — e.g. "herald-guardian", "crusader-archon", "legend-ancient"
+#   roles   — e.g. ["pos 1 carry", "pos 3 offlane"] or ["support"]
+#   focus   — what you want to improve, e.g. ["laning", "itemization"]
+bracket = ""
+roles = []
+focus = []
+
+[server]
+# Where the local GSI receiver + dashboard listen. The GSI config printed by
+# `dota-assistant gsi-config` uses this port, so re-copy it after changing.
+host = "127.0.0.1"
+port = 53100
+
+[logging]
+# Raw GSI session logs (logs/session_*.jsonl). Useful for debugging and for
+# the match-history backfill, but they grow fast and contain your steamid.
+session_logs = true
+# Stop writing a session file once it reaches this size.
+max_mb = 64
+# Keep at most this many session/death log files; oldest are deleted at startup.
+keep_sessions = 20
+
+[coach]
+# Spoken AI coaching tips from Claude. Also powers the post-game review
+# and the opendota_scraper suggestions. Disabled (for live tips) when enabled=false.
+enabled = false
+# Where Claude calls go:
+#   "auto"        — use your Claude Code login if the `claude` CLI is installed
+#                   (no ANTHROPIC_API_KEY needed), else fall back to the API key.
+#   "claude_code" — force the Claude Code CLI (your Max/Pro subscription).
+#   "api"         — force the anthropic SDK (needs ANTHROPIC_API_KEY).
+provider = "auto"
+# Model for the "api" provider (the CLI uses your Claude Code default model).
+model = "claude-opus-4-8"
+# Minimum seconds between tips (a death also triggers one, ignoring the timer).
+min_interval = 120
+
+[overlay]
+# In-game HUD for single-monitor setups (`dota-assistant overlay`, separate
+# process). Dota must be in Fullscreen Windowed — exclusive fullscreen hides
+# other windows. Position: drag it with `dota-assistant overlay --setup`,
+# which saves offset_x/offset_y into settings.json (those win over the values
+# here).
+anchor = "top-right"  # top-left | top-right | bottom-left | bottom-right | top-center
+offset_x = 24         # pixels in from the anchored corner
+offset_y = 150        # clear of Dota's top bar
+width = 250
+font = "Consolas"
+font_size = 12
+timers = 3            # how many upcoming events to list
+opacity = 0.95
+hotkey = "f9"         # show/hide
+lane_until = 900      # hide the CS-pace row after this clock time (seconds)
+
+[discord]
+# Announce through a Discord bot in a voice channel (your teammates hear the
+# timers too). Requires FFmpeg on PATH and internet (edge-tts voices).
+# Setup: discord.com/developers/applications -> New Application -> Bot ->
+# copy token; invite the bot with Connect + Speak permissions; enable
+# Developer Mode in Discord, right-click your voice channel -> Copy Channel ID.
+# Prefer the DISCORD_BOT_TOKEN env var over putting the token in this file.
+enabled = false
+bot_token = ""            # or set the DISCORD_BOT_TOKEN env var
+voice_channel_id = 0
+voice = "en-US-GuyNeural" # any edge-tts voice (`edge-tts --list-voices`)
+
+[enrich]
+# Background OpenDota parse backfill (`dota-assistant enrich`, and
+# automatically on server launch). OpenDota only stores minute-by-minute
+# detail — net-worth and last-hit curves, build order, teamfight death map —
+# for matches somebody has asked it to parse, so this asks, ahead of time,
+# for the matches you'd open.
+on_launch = true
+# Replays expire: a parse request on an old match completes but produces
+# nothing. ~2 months still parse, ~6 months don't. Matches older than this are
+# never attempted; ones that come back empty are remembered and not retried.
+max_age_days = 90
+# Cap per launch so a free shared API isn't hammered. Leftovers roll over to
+# the next launch, so a large history converges over a few runs.
+max_matches = 100
+batch_size = 10          # parses in flight at once (a parse takes ~30s)
+poll_timeout_s = 240     # stop waiting on a batch after this
+poll_interval_s = 6
+request_delay_s = 1.5    # spacing between API calls

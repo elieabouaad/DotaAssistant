@@ -1,0 +1,63 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dota-assistant"
+version = "0.1.0"
+description = "Real-time Dota 2 coaching assistant built on Valve's Game State Integration: voice timers, state-aware alerts, draft help, in-game overlay, and AI post-game review"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.11"
+keywords = ["dota2", "gsi", "coaching", "esports", "overlay"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: MacOS",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Games/Entertainment :: Real Time Strategy",
+]
+dependencies = [
+    "fastapi>=0.111",
+    "uvicorn>=0.30",
+    "pynput>=1.7",
+    "requests>=2.31",
+    "anthropic>=0.40",
+    "discord.py[voice]>=2.7",
+    "PyNaCl>=1.5",
+    "davey>=0.1.0",            # DAVE E2EE voice backend required by discord.py 2.7+
+    "edge-tts>=6.1",
+    "pyttsx3>=2.90; sys_platform == 'win32'",
+    "pywin32>=306; sys_platform == 'win32'",  # overlay click-through
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8",
+    "ruff>=0.6",
+]
+
+[project.scripts]
+dota-assistant = "dota_assistant.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+dota_assistant = ["data/*", "web/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I"]
+ignore = ["E501"]  # long lines exist in prompts and user-facing strings
