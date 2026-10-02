@@ -10,6 +10,15 @@ history into a personal training plan with optional AI reviews.
 > assistant only reads the JSON the game itself sends to a local server you
 > run — it never touches the game process, so it's VAC-safe by construction.
 
+![Live dashboard — game clock, upcoming timers, hero vitals, live scoreboard, minimap, and the tactical panel](docs/img/live-tab.png)
+
+<details>
+<summary>More of the Live tab: talent tree, ability/item cooldowns, your buildings' HP, gold sources</summary>
+
+![Live dashboard detail — talents, cooldowns, buildings, gold breakdown](docs/img/live-tab-detail.png)
+
+</details>
+
 ## What it does
 
 - **Voice timer announcer** — bounty/power/water/wisdom runes, camp stacking,
